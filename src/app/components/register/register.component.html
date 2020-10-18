@@ -1,0 +1,55 @@
+<form [formGroup]="registerForm" (ngSubmit)='enviar(registerForm.value)'>
+
+
+
+<h1> Registro </h1>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre" formControlName='nombre'>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.px]=300 class="margen">
+      <mat-label>Apellidos</mat-label>
+      <input matInput placeholder="Apellidos" formControlName='apellidos'>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+<br>
+
+  
+  <mat-form-field appearance="outline" [style.width.px]=280 >
+    <mat-label>Coreo Electronico</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required formControlName='correo'>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.px]=280 class="margen">
+      <mat-label>Comfirmar Coreo Electronico</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required formControlName='confirmarCorreo'>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+<br>
+
+<mat-form-field appearance="outline">
+  <mat-label>Ingresa una contraseña</mat-label>
+  <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="margen">
+  <mat-label>Comfirna la contraseña</mat-label>
+  <input matInput [type]="hide ? 'password' : 'text'" formControlName='confirmarPass'>
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+</mat-form-field>
+
+<br>
+<button mat-raised-button color="primary" type="submit" [disabled]='registerForm.invalid'>Enviar</button>
+<p></p>
+</form>
