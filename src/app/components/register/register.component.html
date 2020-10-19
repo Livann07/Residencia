@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)='enviar(registerForm.value)'>
+<form [formGroup]="registerForm">
 
 
 
@@ -21,14 +21,14 @@
   
   <mat-form-field appearance="outline" [style.width.px]=280 >
     <mat-label>Coreo Electronico</mat-label>
-    <input matInput placeholder="pat@example.com" [formControl]="email" required formControlName='correo'>
+    <input matInput placeholder="pat@example.com"  formControlName="correo" required>
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 
     <mat-form-field appearance="outline" [style.width.px]=280 class="margen">
-      <mat-label>Comfirmar Coreo Electronico</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required formControlName='confirmarCorreo'>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-label>Confirmar Correo Electronico</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
+      <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error> 
     </mat-form-field>
 
 <br>
@@ -36,20 +36,23 @@
 <mat-form-field appearance="outline">
   <mat-label>Ingresa una contraseña</mat-label>
   <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
+  <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
+  
 </mat-form-field>
 
 <mat-form-field appearance="outline" class="margen">
-  <mat-label>Comfirna la contraseña</mat-label>
-  <input matInput [type]="hide ? 'password' : 'text'" formControlName='confirmarPass'>
-  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  <mat-label>Confirma la contraseña</mat-label>
+  <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher">
+  <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
+  <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
+  <mat-error *ngIf="registerForm.hasError('notSame')"> Las contraseñas no coinciden </mat-error>  
 </mat-form-field>
 
 <br>
-<button mat-raised-button color="primary" type="submit" [disabled]='registerForm.invalid'>Enviar</button>
+<button mat-raised-button color="primary" type="submit" [disabled]='registerForm.invalid' (click)='enviar(registerForm.value)'>Enviar</button>
 <p></p>
 </form>

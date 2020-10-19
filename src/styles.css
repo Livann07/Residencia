@@ -55,10 +55,10 @@ footer {
 
   /*change color of border el 4to*/
   .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: yellow !important;
+    color: green !important;
   }
 
   /*change color of underline when focused*/
  .mat-form-field.mat-focused .mat-form-field-outline  {
-    color: red !important;
+    color: olivedrab !important;
 }
