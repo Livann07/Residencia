@@ -18,6 +18,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 
+// firebase
+import { AngularFireModule} from '@angular/fire';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { DataDbService } from './services/data-db.service';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +47,12 @@ import { ReactiveFormsModule , FormsModule } from '@angular/forms';
     MatButtonModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    DataDbService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

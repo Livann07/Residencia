@@ -1,58 +1,61 @@
+<br><br>
 <form [formGroup]="registerForm">
 
 
 
-<h1> Registro </h1>
+    <h1 class="animated fadeIn fast"> Registro </h1>
+    <hr><br>
 
     <mat-form-field appearance="outline">
-      <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Nombre" formControlName='nombre'>
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName='nombre'>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline" [style.width.px]=300 class="margen">
-      <mat-label>Apellidos</mat-label>
-      <input matInput placeholder="Apellidos" formControlName='apellidos'>
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-label>Apellidos</mat-label>
+        <input matInput placeholder="Apellidos" formControlName='apellidos'>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
 
-<br>
+    <br>
 
-  
-  <mat-form-field appearance="outline" [style.width.px]=280 >
-    <mat-label>Coreo Electronico</mat-label>
-    <input matInput placeholder="pat@example.com"  formControlName="correo" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.px]=280>
+        <mat-label>Correo Electronico</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="correo" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
 
     <mat-form-field appearance="outline" [style.width.px]=280 class="margen">
-      <mat-label>Confirmar Correo Electronico</mat-label>
-      <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
-      <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error> 
+        <mat-label>Confirmar Correo Electronico</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
+        <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error>
     </mat-form-field>
 
-<br>
+    <br>
 
-<mat-form-field appearance="outline">
-  <mat-label>Ingresa una contraseña</mat-label>
-  <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
-  <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
-  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-form-field appearance="outline">
+        <mat-label>Ingresa una contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
+        <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
-  
-</mat-form-field>
 
-<mat-form-field appearance="outline" class="margen">
-  <mat-label>Confirma la contraseña</mat-label>
-  <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher">
-  <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="margen">
+        <mat-label>Confirma la contraseña</mat-label>
+        <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher">
+        <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
   <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
-  <mat-error *ngIf="registerForm.hasError('notSame')"> Las contraseñas no coinciden </mat-error>  
-</mat-form-field>
+        <mat-error *ngIf="registerForm.hasError('notSame')"> Las contraseñas no coinciden </mat-error>
+    </mat-form-field>
 
-<br>
-<button mat-raised-button color="primary" type="submit" [disabled]='registerForm.invalid' (click)='enviar(registerForm.value)'>Enviar</button>
-<p></p>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]='registerForm.invalid' (click)='enviar(registerForm.value)'>Enviar</button>
+    <p></p>
 </form>
+<br><br><br>

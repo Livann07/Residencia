@@ -62,3 +62,5 @@ footer {
  .mat-form-field.mat-focused .mat-form-field-outline  {
     color: olivedrab !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

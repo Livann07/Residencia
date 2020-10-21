@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { DataDbService } from '../../services/data-db.service';
+import { usersU } from '../../models/users.interface';
+
+
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -27,18 +32,18 @@ export class MyErrorStateMatcher2 implements ErrorStateMatcher {
 export class RegisterComponent implements OnInit {
   hide = true;
   hide2 = true;
-  registerForm: FormGroup
+  registerForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   mat2 = new MyErrorStateMatcher2();
-  
 
- constructor(private _builder: FormBuilder) { 
+
+ constructor(private _builder: FormBuilder, private dbData: DataDbService) {
 
     this.registerForm = this._builder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
-      correo: ['',Validators.email],
-      confirmarCorreo: ['',Validators.email],
+      correo: ['', Validators.email],
+      confirmarCorreo: ['', Validators.email],
       pass: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6)
@@ -47,7 +52,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ])],
-    }, { 
+    }, {
       validators: [this.checkPasswords, this.checkCorreos]
     });
   }
@@ -58,7 +63,7 @@ export class RegisterComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email ]);
   email2 = new FormControl('', [Validators.required, Validators.email]);
   pass1 = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  
+
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -78,8 +83,18 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  enviar(values: any){
+  enviar(values: usersU){
     console.log(values);
+
+    const nuevo = {
+      nombre: values.nombre,
+      apellidos: values.apellidos,
+      correo: values.correo,
+      pass: values.pass
+    }
+
+    this.dbData.saveUsers(nuevo);
+
   }
   
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -92,7 +107,7 @@ export class RegisterComponent implements OnInit {
     let corre = group2.controls.correo.value;
     let confirmcorre = group2.controls.confirmarCorreo.value;
 
-    return corre === confirmcorre ? null : { notSame2: true }
+    return corre === confirmcorre ? null : { notSame2: true };
   }
-  
+
 }
