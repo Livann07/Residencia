@@ -23,6 +23,7 @@ import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { DataDbService } from './services/data-db.service';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -33,7 +34,8 @@ import { DataDbService } from './services/data-db.service';
     NavbarComponent,
     AboutComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
