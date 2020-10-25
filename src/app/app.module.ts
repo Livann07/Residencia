@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
-
+import {MatCardModule} from '@angular/material/card';
 // firebase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
@@ -50,7 +50,8 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatCardModule
   ],
   providers: [
     DataDbService

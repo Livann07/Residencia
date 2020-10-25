@@ -94,8 +94,8 @@ export class RegisterComponent implements OnInit {
     }
 
     this.dbData.saveUsers(nuevo);
-
   }
+  
   
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
     let pass = group.controls.pass.value;
