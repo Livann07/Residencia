@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormControlDirective, NgForm, Validators} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { DataDbService } from '../../services/data-db.service';
-import { usersU } from '../../models/users.interface';
-import { element } from 'protractor';
-import { NgForOf } from '@angular/common';
+import { SesionService } from '../../services/sesion.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +12,10 @@ export class LoginComponent implements OnInit {
   hide = true;
   datos: any;
   loginForm: FormGroup;
-  sesionActiva = this.verficiarSesion();
+  sesionActiva = this.sesi.verificarSesion();
   
 
-  constructor(private dbData: DataDbService, private _builder: FormBuilder) { 
+  constructor(private dbData: DataDbService, private _builder: FormBuilder, public sesi: SesionService) { 
     this.loginForm = this._builder.group({
       correo: [''],
       contra: ['']
@@ -53,7 +50,7 @@ export class LoginComponent implements OnInit {
     this.datos.forEach(element => {
       if(element.correo == values.correo)
       {
-        this.login(element.nombre,element.correo);
+        this.sesi.login(element.nombre,element.correo);
         this.sesionActiva = true;
         l = true;
       }
@@ -61,28 +58,6 @@ export class LoginComponent implements OnInit {
     if(l == false)
     {
       this.sesionActiva = false;
-    }
-  }
-
-  login(usuario: string, correo: string)
-  {
-    sessionStorage.setItem('correo', correo);
-    sessionStorage.setItem('nombre', usuario);
-  }
-
-  getNombreSesion()
-  {
-    if(this.verficiarSesion()){
-      return sessionStorage.getItem('nombre');
-    }
-  }
-  verficiarSesion()
-  {
-    if(sessionStorage.getItem('correo') != null){
-      return true;
-    }
-    else {
-      return false;
     }
   }
 }

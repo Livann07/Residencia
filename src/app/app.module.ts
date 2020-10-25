@@ -24,7 +24,7 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { DataDbService } from './services/data-db.service';
 import { LoginComponent } from './components/login/login.component';
-
+import { SesionService } from './services/sesion.service';
 
 
 @NgModule({
@@ -54,7 +54,8 @@ import { LoginComponent } from './components/login/login.component';
     MatCardModule
   ],
   providers: [
-    DataDbService
+    DataDbService,
+    SesionService
   ],
   bootstrap: [AppComponent]
 })
