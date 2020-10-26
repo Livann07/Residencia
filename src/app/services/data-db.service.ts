@@ -16,4 +16,9 @@ export class DataDbService {
   saveUsers(newUser: usersU): void{
     this.userCollection.add(newUser);
   }
+
+  getUser()
+  {
+    return this.userCollection.snapshotChanges();
+  }
 }

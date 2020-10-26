@@ -1,0 +1,10 @@
+.forma {
+
+    display: grid;
+    height: 350px;
+    justify-content: center;
+}
+.mat-elevation-z3{
+    padding-left: 150px;
+    padding-right: 150px;
+}

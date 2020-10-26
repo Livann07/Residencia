@@ -40,7 +40,7 @@ footer {
 
 .mat-focused .mat-form-field-label {
     /*change color of label*/
-    color: green !important;
+    color: rgb(0, 0, 0) !important;
 }
   
    .mat-form-field-underline {
@@ -55,12 +55,12 @@ footer {
 
   /*change color of border el 4to*/
   .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: green !important;
+    color: rgb(57, 57, 250) !important;
   }
 
   /*change color of underline when focused*/
  .mat-form-field.mat-focused .mat-form-field-outline  {
-    color: olivedrab !important;
+    color: rgb(100, 140, 250) !important;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

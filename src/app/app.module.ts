@@ -17,7 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
-
+import {MatCardModule} from '@angular/material/card';
+import { SesionService } from './services/sesion.service';
 // firebase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
@@ -29,6 +30,7 @@ import { DataPonentesService } from './services/ponentes/data-ponentes.service';
 import { PonenteComponent } from './components/ponentes/ponente/ponente.component';
 import { PonentesComponent } from './components/ponentes/ponentes/ponentes.component';
 import { SearchComponent } from './components/search/search.component';
+
 
 
 
@@ -59,11 +61,13 @@ import { SearchComponent } from './components/search/search.component';
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatCardModule
   ],
   providers: [
     DataDbService,
-    DataPonentesService
+    DataPonentesService,
+    SesionService
   ],
   bootstrap: [AppComponent]
 })

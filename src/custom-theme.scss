@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$congresoResidencia-primary: mat-palette($mat-indigo);
+$congresoResidencia-primary: mat-palette($mat-blue-grey);
 $congresoResidencia-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -33,7 +33,7 @@ $congresoResidencia-theme: mat-light-theme((
 // that you are using.
 @include angular-material-theme($congresoResidencia-theme);
 
-
+/*
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -47,7 +47,7 @@ $congresoResidencia-theme: mat-light-theme((
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$congresoResidencia-primary: mat-palette($mat-green);
+$congresoResidencia-primary: mat-palette($mat-blue-grey);
 $congresoResidencia-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -60,4 +60,6 @@ $congresoResidencia-theme: mat-light-theme($congresoResidencia-primary, $congres
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($congresoResidencia-theme);
+
+*/
 
