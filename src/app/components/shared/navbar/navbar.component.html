@@ -37,12 +37,19 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="about">Acerca de</a>
             </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['ponentes']">Ponentes</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <a class="nav-link" style="color:white" routerLink="login">Iniciar Sesion</a>
             <a class="nav-link" style="color:white" routerLink="register">Registrarse</a>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+
+        <div class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar ponente" aria-label="Search" (keyup.enter)="buscarPonente(buscarTexto.value)" #buscarTexto>
+            <button (click)="buscarPonente(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar
+            </button>
+        </div>
     </div>
 </nav>

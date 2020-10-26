@@ -24,6 +24,11 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { DataDbService } from './services/data-db.service';
 import { LoginComponent } from './components/login/login.component';
+import { PonenteTarjetaComponent } from './components/ponentes/ponente-tarjeta/ponente-tarjeta.component';
+import { DataPonentesService } from './services/ponentes/data-ponentes.service';
+import { PonenteComponent } from './components/ponentes/ponente/ponente.component';
+import { PonentesComponent } from './components/ponentes/ponentes/ponentes.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -35,7 +40,11 @@ import { LoginComponent } from './components/login/login.component';
     AboutComponent,
     FooterComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PonenteTarjetaComponent,
+    PonenteComponent,
+    PonentesComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,8 @@ import { LoginComponent } from './components/login/login.component';
     AngularFirestoreModule
   ],
   providers: [
-    DataDbService
+    DataDbService,
+    DataPonentesService
   ],
   bootstrap: [AppComponent]
 })
