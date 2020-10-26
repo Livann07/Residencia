@@ -28,4 +28,9 @@ export class SesionService {
       return false;
     }
   }
+
+  logOut()
+  {
+    sessionStorage.clear();
+  }
 }

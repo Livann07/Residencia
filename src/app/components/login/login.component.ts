@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormControlDirective, NgForm, Validators} from '@angular/forms';
 import { DataDbService } from '../../services/data-db.service';
 import { SesionService } from '../../services/sesion.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -50,14 +51,23 @@ export class LoginComponent implements OnInit {
     this.datos.forEach(element => {
       if(element.correo == values.correo)
       {
-        this.sesi.login(element.nombre,element.correo);
-        this.sesionActiva = true;
-        l = true;
+        if(values.contra == this.descifrarPass(element.pass))
+        {
+          this.sesi.login(element.nombre,element.correo);
+          this.sesionActiva = true;
+          l = true;
+        }
       }
     });
     if(l == false)
     {
       this.sesionActiva = false;
     }
+  }
+
+  descifrarPass(pass: string): string
+  {
+    var l = CryptoJS.AES.decrypt(pass, '0123456789').toString(CryptoJS.enc.Utf8);
+    return l;
   }
 }

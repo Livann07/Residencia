@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import { ErrorStateMatcher } from '@angular/material/core';
 import { DataDbService } from '../../services/data-db.service';
 import { usersU } from '../../models/users.interface';
-
+import * as CryptoJS from 'crypto-js';
 
 
 
@@ -85,12 +85,13 @@ export class RegisterComponent implements OnInit {
 
   enviar(values: usersU){
     console.log(values);
+    
 
     const nuevo = {
       nombre: values.nombre,
       apellidos: values.apellidos,
       correo: values.correo,
-      pass: values.pass
+      pass: this.convertirPass(values.pass),
     }
 
     this.dbData.saveUsers(nuevo);
@@ -110,4 +111,9 @@ export class RegisterComponent implements OnInit {
     return corre === confirmcorre ? null : { notSame2: true };
   }
 
+  convertirPass(contra: string)
+  {
+    let l = CryptoJS.AES.encrypt(contra, '0123456789').toString();
+    return l;
+  }
 }

@@ -39,8 +39,9 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <div *ngIf='this.ses.verificarSesion()'>
-                <a class="nav-link" style="color:white" routerLink="login">{{this.ses.getNombreSesion()}}</a>
+            <div *ngIf='this.ses.verificarSesion()' class='collapse navbar-collapse'>
+                <a class="nav-link" style="color:white;cursor:pointer"  (click)='this.ses.logOut()'>Cerrar Sesion</a>
+                <a class="nav-link" style="color:white" routerLink="home">{{this.ses.getNombreSesion()}}</a>
             </div>
             <div *ngIf='!this.ses.verificarSesion()' class='collapse navbar-collapse'>
                 <a class="nav-link" style="color:white" routerLink="login">Iniciar Sesion</a>
