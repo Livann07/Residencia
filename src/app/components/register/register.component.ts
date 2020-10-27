@@ -95,6 +95,11 @@ export class RegisterComponent implements OnInit {
     }
 
     this.dbData.saveUsers(nuevo);
+    this.borrarCampos();
+  }
+
+  borrarCampos(){
+    this.registerForm.reset();
   }
   
   

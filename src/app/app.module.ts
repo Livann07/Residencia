@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import { SesionService } from './services/sesion.service';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 // firebase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
@@ -62,7 +63,8 @@ import { SearchComponent } from './components/search/search.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [
     DataDbService,

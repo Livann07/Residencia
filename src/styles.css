@@ -42,25 +42,37 @@ footer {
     /*change color of label*/
     color: rgb(0, 0, 0) !important;
 }
-  
-   .mat-form-field-underline {
+
+.mat-form-field-underline {
     /*change color of underline*/
     background-color: red !important;
-  } 
-  
-  .mat-form-field-ripple {
-   /*change color of underline when focused*/
-   background-color: pink !important;
-  }
+}
 
-  /*change color of border el 4to*/
-  .mat-form-field-appearance-outline .mat-form-field-outline {
+.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: pink !important;
+}
+
+
+/*change color of border el 4to*/
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
     color: rgb(57, 57, 250) !important;
-  }
+}
 
-  /*change color of underline when focused*/
- .mat-form-field.mat-focused .mat-form-field-outline  {
+
+/*change color of underline when focused*/
+
+.mat-form-field.mat-focused .mat-form-field-outline {
     color: rgb(100, 140, 250) !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+    background-color: #f7f7f7;
+}
+
+body {
+    margin: 0;
+}

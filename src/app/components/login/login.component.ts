@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormControlDirective, NgForm, Validators} from '@angular/forms';
 import { DataDbService } from '../../services/data-db.service';
 import { SesionService } from '../../services/sesion.service';
+import { Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   sesionActiva = this.sesi.verificarSesion();
   
 
-  constructor(private dbData: DataDbService, private _builder: FormBuilder, public sesi: SesionService) { 
+  constructor(private dbData: DataDbService, private _builder: FormBuilder, public sesi: SesionService, private snackBar:MatSnackBar,private router: Router) { 
     this.loginForm = this._builder.group({
       correo: [''],
       contra: ['']
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
   verificar(values: any)
   {
     this.recibir(values);
+    this.borrarCampos();
   }
 
   recibir(values: any)
@@ -45,6 +48,11 @@ export class LoginComponent implements OnInit {
       this.mostrar(values);
     });
   }
+
+  borrarCampos(){
+    this.loginForm.reset();
+  }
+ 
   mostrar(values: any)
   {
     var l = false;
@@ -56,12 +64,20 @@ export class LoginComponent implements OnInit {
           this.sesi.login(element.nombre,element.correo);
           this.sesionActiva = true;
           l = true;
+         // window.open('home.component.html');
+          this.router.navigate(['home']);
         }
+        
       }
     });
-    if(l == false)
-    {
+    if(l == false){
       this.sesionActiva = false;
+    }
+    if (!l && !this.sesionActiva){
+      this.snackBar.open('Usuario y/o contraseña inválidos', 'Salir', {
+        duration: 3000,
+        verticalPosition: 'top'
+      });
     }
   }
 
