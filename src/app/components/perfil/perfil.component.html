@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col" id="barra">
+            <mat-card class="mat-elevation-z3" id='barraMat'>
+                <div>
+                    Bienvenido: <br>                    
+                     Giovanni
+                     <hr>
+                </div>
+                <br> 
+                <div>
+                    <a class="nav-link"  [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a>
+                    <a class="nav-link"  routerLink="login"> Generar Constancia</a>
+                </div>
+                <div style="text-align: center;" id='cerrar'>
+                    <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="login"> Cerrar Sesion</button>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-md-10" id="contenido">
+            <mat-card class="mat-elevation-z3" id='barraCont'> 
+                <router-outlet name="congre"></router-outlet>
+            </mat-card>
+        </div>
+    </div>
+</div>

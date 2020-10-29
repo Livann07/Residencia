@@ -17,21 +17,24 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { SesionService } from './services/sesion.service';
-// firebase
-import { AngularFireModule} from '@angular/fire';
-import { AngularFirestoreModule} from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
-import { DataDbService } from './services/data-db.service';
 import { LoginComponent } from './components/login/login.component';
 import { PonenteTarjetaComponent } from './components/ponentes/ponente-tarjeta/ponente-tarjeta.component';
 import { DataPonentesService } from './services/ponentes/data-ponentes.service';
 import { PonenteComponent } from './components/ponentes/ponente/ponente.component';
 import { PonentesComponent } from './components/ponentes/ponentes/ponentes.component';
 import { SearchComponent } from './components/search/search.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
+// firebase
+import { AngularFireModule} from '@angular/fire';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { DataDbService } from './services/data-db.service';
+import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import { SearchComponent } from './components/search/search.component';
     PonenteTarjetaComponent,
     PonenteComponent,
     PonentesComponent,
-    SearchComponent
+    SearchComponent,
+    PerfilComponent,
+    RegistroCongresoComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,9 @@ import { SearchComponent } from './components/search/search.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [
     DataDbService,

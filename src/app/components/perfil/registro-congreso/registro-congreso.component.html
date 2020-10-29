@@ -1,0 +1,87 @@
+<br><br>
+<div class="container">
+    <h1>Registrate para el congreso</h1>    
+    <hr>
+    <label id="example-radio-group-label">¿Eres estudiante del ITLM?</label>
+    <mat-radio-group aria-label="¿Eres estudiante del ITLM?" class="botones" [(ngModel)]="opcion">
+        <mat-radio-button value="Si">Si, lo soy</mat-radio-button>
+        <mat-radio-button value="No">No, vengo de otra escuela</mat-radio-button>
+    </mat-radio-group>
+    <hr>
+    <div [ngSwitch]="opcion">
+        <div class="estudiante" *ngSwitchCase='"Si"'>
+            <h3>Ingresa los datos</h3>
+            <form [formGroup]="congresoAlumnoForm" (ngSubmit)="enviarAlumnos()">
+                <mat-form-field appearance="outline">
+                    <mat-label>No. Control</mat-label>
+                    <input matInput #control placeholder="No. Control" formControlName='numControl' maxlength="8" minlength="8" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint align="end">{{control.value.length}} / 8</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Carrerra</mat-label>
+                    <input matInput placeholder="Carrera" formControlName="carrera">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Celular</mat-label>
+                    <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular1' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Docente colaborador</mat-label>
+                    <input matInput placeholder="Nombre del docente" formControlName='docente'>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint align="end">Opcional</mat-hint>
+                </mat-form-field>
+                <br>
+                <label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>
+                <section class="conferencias" formArrayName="confeMarcadas" *ngFor="let item of confeMarcadasCongresoAlumosFormArray.controls; let i = index">
+                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
+                </section>
+                <label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>
+                <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumosFormArray.controls; let i = index">
+                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{talleres[i].name}} </mat-checkbox>
+                </section>
+                <br>
+                <button mat-raised-button color="primary" type="submit" [disabled]='congresoAlumnoForm.invalid'>Registrarse</button>
+            </form>
+            <br>
+        </div>
+        <div class="externo" *ngSwitchCase='"No"'>
+            <h3>Ingresa los datos</h3>
+            <form [formGroup]="congresoExternoForm" (ngSubmit)="enviarExternos()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Celular</mat-label>
+                    <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular2' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Institucion</mat-label>
+                    <input matInput placeholder="Institucion" formControlName='institucion'>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <br>
+                <label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>
+                <section class="conferencias" formArrayName="confeMarcadas" *ngFor="let item of confeMarcadasCongresoAlumExternoFormArray.controls; let i = index">
+                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
+                </section>
+
+                <label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>
+                <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
+                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{talleres[i].name}} </mat-checkbox>
+                </section>
+                <br>
+                <button mat-raised-button color="primary" type="submit" [disabled]='congresoExternoForm.invalid'>Registrarse</button>
+            </form>
+            <br>
+        </div>
+        <div *ngSwitchDefault>
+        </div>
+    </div>
+</div>

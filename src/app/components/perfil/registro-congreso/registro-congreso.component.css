@@ -1,0 +1,12 @@
+.botones{
+    display: flex;
+    flex-direction: column;
+}
+.conferencias{
+    display: flex;
+    flex-direction: column;
+}
+.talleres{
+    display: flex;
+    flex-direction: column;
+}
