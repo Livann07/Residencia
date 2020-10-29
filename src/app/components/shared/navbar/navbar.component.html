@@ -32,15 +32,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
-
-
-
-
                 <li *ngIf='this.ses.verificarSesion()' class='nav-item' routerLinkActive="active">
                     <a class="nav-link" style="cursor:pointer" (click)='this.ses.logOut()'>Cerrar Sesion</a>
                 </li>
                 <li *ngIf='this.ses.verificarSesion()' class='nav-item' routerLinkActive="active">
-                    <a class="nav-link" routerLink="home">{{this.ses.getNombreSesion()}}</a>
+                    <a class="nav-link" routerLink="perfil">{{this.ses.getNombreSesion()}}</a>
                 </li>
                 <li *ngIf='!this.ses.verificarSesion()' class='nav-item' routerLinkActive="active">
                     <a class="nav-link" routerLink="login">Iniciar Sesion</a>

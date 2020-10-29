@@ -22,29 +22,30 @@
 
     </div>
 </div>-->
-
-<br><br><br><br>
-<mat-card class="mat-elevation-z3">
-<form style="text-align: center;" [formGroup]="loginForm">
-    <br><br><br>
-    <h1 class="animated fadeIn fast "> Iniciar Sesi&oacute;n </h1>
-    <hr><br>
-    
-    <mat-form-field appearance="outline" [style.width.px]=280>
-        <mat-label>Correo Electronico</mat-label>
-        <input matInput placeholder="pat@ejemplo.com" formControlName='correo'>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="outline" [style.width.px]=280 layout="row">
-        <mat-label>Ingresa una contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName='contra'>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </button>
-    </mat-form-field>
-    <br><br>
-    <button mat-raised-button color="primary" type="submit" (click)="verificar(loginForm.value)">Iniciar Sesi&oacute;n</button>
-    <br><br><br>
-</form>
-</mat-card>
-<br><br><br><br>
+<div class="container">
+    <br><br><br><br>
+    <mat-card class="mat-elevation-z3">
+    <form style="text-align: center;" [formGroup]="loginForm">
+        <br><br><br>
+        <h1 class="animated fadeIn fast "> Iniciar Sesi&oacute;n </h1>
+        <hr><br>
+        
+        <mat-form-field appearance="outline" [style.width.px]=280>
+            <mat-label>Correo Electronico</mat-label>
+            <input matInput placeholder="pat@ejemplo.com" formControlName='correo'>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" [style.width.px]=280 layout="row">
+            <mat-label>Ingresa una contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName='contra'>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+        </mat-form-field>
+        <br><br>
+        <button mat-raised-button color="primary" type="submit" (click)="verificar(loginForm.value)">Iniciar Sesi&oacute;n</button>
+        <br><br><br>
+    </form>
+    </mat-card>
+    <br><br><br><br>
+</div>

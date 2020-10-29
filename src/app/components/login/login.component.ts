@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       {
         if(values.contra == this.descifrarPass(element.pass))
         {
-          this.sesi.login(element.nombre,element.correo);
+          this.sesi.login(element.nombre,element.correo,element.apellidos);
           this.sesionActiva = true;
           l = true;
          // window.open('home.component.html');
