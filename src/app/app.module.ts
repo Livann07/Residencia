@@ -29,6 +29,9 @@ import { SearchComponent } from './components/search/search.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+
 
 // firebase
 import { AngularFireModule} from '@angular/fire';
@@ -36,6 +39,7 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { DataDbService } from './services/data-db.service';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
+import { PonenteSeleccionComponent } from './components/ponentes/ponente-seleccion/ponente-seleccion.component';
 
 
 @NgModule({
@@ -53,6 +57,7 @@ import { RegistroCongresoComponent } from './components/perfil/registro-congreso
     SearchComponent,
     PerfilComponent,
     RegistroCongresoComponent,
+    PonenteSeleccionComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ import { RegistroCongresoComponent } from './components/perfil/registro-congreso
     MatCardModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
   providers: [
     DataDbService,

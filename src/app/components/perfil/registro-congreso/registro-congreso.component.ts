@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SesionService } from '../../../services/sesion.service';
 import { DataDbService } from '../../../services/data-db.service';
+import { DataPonentesService, Ponentes } from '../../../services/ponentes/data-ponentes.service';
+
+
 
 @Component({
   selector: 'registro-congreso',
@@ -9,9 +12,77 @@ import { DataDbService } from '../../../services/data-db.service';
   styleUrls: ['./registro-congreso.component.css']
 })
 export class RegistroCongresoComponent implements OnInit {
+
+  ponentes: Ponentes[] = [];
+  @Input() ponente: any = {};
+  @Input() index: number;
+  @Output () ponenteSeleccion: EventEmitter<number>;
+
   congresoAlumnoForm: FormGroup;
   congresoExternoForm: FormGroup;
   opcion: string;
+  ponentess: any[] = [
+    {
+      nombre: 'Mark Zuckergerb',
+      correo: 'mz@gmail.com',
+      taller: 'Taller Magistral',
+      name: 'Conferencia de Mark',
+      institucion: 'itlm',
+      desConferencia: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores modi rem tenetur voluptatibus quia, neque corrupti ipsam voluptate omnis earum ipsa praesentium nesciunt, facere tempora inventore recusandae amet quos consequuntur.',
+      img: 'assets/img/mz.jpg',
+      completed: false
+    },
+    {
+      nombre: 'Elon Musk',
+      correo: 'em@gmail.com',
+      taller: 'Taller Magistral',
+      name: 'Conferencia de Elon',
+      institucion: 'ITLM',
+      desConferencia: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores modi rem tenetur voluptatibus quia, neque corrupti ipsam voluptate omnis earum ipsa praesentium nesciunt, facere tempora inventore recusandae amet quos consequuntur.',
+      img: 'assets/img/em.png',
+      completed: false,
+    },
+    {
+      nombre: 'Bill Gates',
+      correo: 'bg@gmail.com',
+      taller: 'Taller Magistral',
+      name: 'Conferencia de Bill',
+      institucion: 'ITLM',
+      desConferencia: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores modi rem tenetur voluptatibus quia, neque corrupti ipsam voluptate omnis earum ipsa praesentium nesciunt, facere tempora inventore recusandae amet quos consequuntur.',
+      img: 'assets/img/bg.jpg',
+      completed: false,
+    },
+    {
+      nombre: 'Steve Jobs',
+      correo: 'sj@gmail.com',
+      taller: 'Taller Magistral',
+      name: 'Conferencia de Steve',
+      institucion: 'ITLM',
+      desConferencia: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores modi rem tenetur voluptatibus quia, neque corrupti ipsam voluptate omnis earum ipsa praesentium nesciunt, facere tempora inventore recusandae amet quos consequuntur.',
+      img: 'assets/img/sj.jpg',
+      completed: false,
+    },
+    {
+      nombre: 'Larry Page',
+      correo: 'lp@gmail.com',
+      taller: 'Taller Magistral',
+      name: 'Conferencia Larry',
+      institucion: 'ITLM',
+      desConferencia: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores modi rem tenetur voluptatibus quia, neque corrupti ipsam voluptate omnis earum ipsa praesentium nesciunt, facere tempora inventore recusandae amet quos consequuntur.',
+      img: 'assets/img/lp.jpg',
+      completed: false,
+    },
+    {
+      nombre: 'Mark Shuttleworth',
+      correo: 'sj@gmail.com',
+      taller: 'Taller Magistral',
+      name: 'Conferencia shutnoseque',
+      institucion: 'ITLM',
+      desConferencia: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores modi rem tenetur voluptatibus quia, neque corrupti ipsam voluptate omnis earum ipsa praesentium nesciunt, facere tempora inventore recusandae amet quos consequuntur.',
+      img: 'assets/img/ms.jpg',
+      completed: false,
+    },
+  ];
   conferencias: any = [
     {
       name: 'Conferencia 1',
@@ -25,18 +96,32 @@ export class RegistroCongresoComponent implements OnInit {
       name: 'Conferencia 3',
       completed: false,
     },
+    {
+      name: 'Conferencia 4',
+      completed: false,
+    },
+    {
+      name: 'Conferencia 5',
+      completed: false,
+    },
+    {
+      name: 'Conferencia 6',
+      completed: false,
+    },
   ];
   talleres: any = [
     {
-      name: 'taller 1',
+      name: 'Taller 1',
       completed: false,
     },
     {
-      name: 'taller 2',
+      name: 'Taller 2',
       completed: false,
     },
   ];
-  constructor(private _alumnoBuilder: FormBuilder, private _externoBuilder: FormBuilder, public sesi: SesionService, private dbData: DataDbService) { 
+
+ 
+  constructor(private _alumnoBuilder: FormBuilder, private _externoBuilder: FormBuilder, public sesi: SesionService, private dbData: DataDbService, private _ponentesS: DataPonentesService) { 
     this.congresoAlumnoForm =this. _alumnoBuilder.group({
       numControl: ["", Validators.required],
       carrera: ["", Validators.required],
@@ -61,7 +146,11 @@ export class RegistroCongresoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ponentes = this._ponentesS.getPonentes();
+    this.ponenteSeleccion = new EventEmitter();
   }
+ 
+
   
   //Para alumno externo
   get confeMarcadasCongresoAlumExternoFormArray() {
@@ -81,7 +170,7 @@ export class RegistroCongresoComponent implements OnInit {
 
   ///////Para alumno externo
   private addCheckboxesOfconfeMarcadas() {
-    this.conferencias.forEach(() => this.confeMarcadasCongresoAlumExternoFormArray.push(new FormControl(false)));
+    this.ponentess.forEach(() => this.confeMarcadasCongresoAlumExternoFormArray.push(new FormControl(false)));
   }
   private addCheckboxesOfTalleresMarcadas() {
     this.talleres.forEach(() => this.talleresMarcadosCongresoAlumExternoFormArray.push(new FormControl(false)));
@@ -89,7 +178,7 @@ export class RegistroCongresoComponent implements OnInit {
 
   ///////Para alumno del tec
   private addCheckboxesOfconfeMarcadasAlumno() {
-    this.conferencias.forEach(() => this.confeMarcadasCongresoAlumosFormArray.push(new FormControl(false)));
+    this.ponentess.forEach(() => this.confeMarcadasCongresoAlumosFormArray.push(new FormControl(false)));
   }
   private addCheckboxesOfTalleresMarcadasAlumno() {
     this.talleres.forEach(() => this.talleresMarcadosCongresoAlumosFormArray.push(new FormControl(false)));
@@ -99,7 +188,7 @@ export class RegistroCongresoComponent implements OnInit {
   regresarConferenciasAlumExternoForm()
   {
      const conferencias = this.congresoExternoForm.value.confeMarcadas
-      .map((checked, i) => checked ? this.conferencias[i].name : null)
+      .map((checked, i) => checked ? this.ponentess[i].name : null)
       .filter(v => v !== null);
       return conferencias;
   }
@@ -114,7 +203,7 @@ export class RegistroCongresoComponent implements OnInit {
   regresarConferenciasAlumosForm()
   {
      const conferencias = this.congresoAlumnoForm.value.confeMarcadas
-      .map((checked, i) => checked ? this.conferencias[i].name : null)
+      .map((checked, i) => checked ? this.ponentess[i].name : null)
       .filter(v => v !== null);
       return conferencias;
   }

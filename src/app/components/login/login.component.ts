@@ -5,6 +5,7 @@ import { SesionService } from '../../services/sesion.service';
 import { Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as CryptoJS from 'crypto-js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
   verificar(values: any)
   {
     this.recibir(values);
-    this.borrarCampos();
+    //this.borrarCampos();
   }
 
   recibir(values: any)
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
   mostrar(values: any)
   {
     var l = false;
+    var ss =false;
     this.datos.forEach(element => {
       if(element.correo == values.correo)
       {
@@ -64,20 +66,32 @@ export class LoginComponent implements OnInit {
           this.sesi.login(element.nombre,element.correo,element.apellidos);
           this.sesionActiva = true;
           l = true;
-         // window.open('home.component.html');
+          // window.open('home.component.html');
+          this.borrarCampos();
           this.router.navigate(['home']);
-        }
-        
+         }else{
+            Swal.fire({
+              allowOutsideClick: false,
+              title: 'Error',
+              icon: 'error', 
+              text: 'Contraseña incorrecta, intentalo de nuevo'
+            });
+         }
+         ss=true;
       }
     });
-    if(l == false){
-      this.sesionActiva = false;
-    }
-    if (!l && !this.sesionActiva){
-      this.snackBar.open('Usuario y/o contraseña inválidos', 'Salir', {
-        duration: 3000,
-        verticalPosition: 'top'
+
+    if(!ss){
+      Swal.fire({
+        allowOutsideClick: false,
+        title: 'Error',
+        icon: 'error', 
+        text: 'No existe ese correo, registrate para acceder'
       });
+    }
+    
+    if(l == false){
+       this.sesionActiva = false;
     }
   }
 

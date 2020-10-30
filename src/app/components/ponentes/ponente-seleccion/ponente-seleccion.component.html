@@ -1,0 +1,11 @@
+<div class="card animated fadeIn fast">
+    <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
+    <div class="card-body">
+        <h5 class="card-title">{{ ponente.nombre }}</h5>
+        <p class="card-text">{{ ponente.desConferencia }}</p>
+        <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
+        <mat-slide-toggle [(ngModel)]="checked" class="example-margin" [color]="color" (change)="changed()">
+            Asistir a conferencia {{checked}}
+        </mat-slide-toggle>
+    </div>
+</div>
