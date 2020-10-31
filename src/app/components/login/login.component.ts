@@ -58,29 +58,23 @@ export class LoginComponent implements OnInit {
   {
     var l = false;
     var ss =false;
+    var pw= false;
     this.datos.forEach(element => {
       if(element.correo == values.correo)
       {
         if(values.contra == this.descifrarPass(element.pass))
         {
+          pw=true;
           this.sesi.login(element.nombre,element.correo,element.apellidos);
           this.sesionActiva = true;
           l = true;
           // window.open('home.component.html');
           this.borrarCampos();
           this.router.navigate(['home']);
-         }else{
-            Swal.fire({
-              allowOutsideClick: false,
-              title: 'Error',
-              icon: 'error', 
-              text: 'Contraseña incorrecta, intentalo de nuevo'
-            });
          }
          ss=true;
       }
     });
-
     if(!ss){
       Swal.fire({
         allowOutsideClick: false,
@@ -89,7 +83,14 @@ export class LoginComponent implements OnInit {
         text: 'No existe ese correo, registrate para acceder'
       });
     }
-    
+    if(!pw && ss){
+      Swal.fire({
+        allowOutsideClick: false,
+        title: 'Error',
+        icon: 'error', 
+        text: 'Contraseña incorrecta, intentalo de nuevo'
+      });
+    }
     if(l == false){
        this.sesionActiva = false;
     }

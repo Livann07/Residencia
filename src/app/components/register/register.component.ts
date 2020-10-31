@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 import { DataDbService } from '../../services/data-db.service';
 import { usersU } from '../../models/users.interface';
+import { Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 
 
@@ -37,7 +38,7 @@ export class RegisterComponent implements OnInit {
   mat2 = new MyErrorStateMatcher2();
 
 
- constructor(private _builder: FormBuilder, private dbData: DataDbService) {
+ constructor(private _builder: FormBuilder, private dbData: DataDbService, private route: Router) {
 
     this.registerForm = this._builder.group({
       nombre: ['', Validators.required],
@@ -96,6 +97,7 @@ export class RegisterComponent implements OnInit {
 
     this.dbData.saveUsers(nuevo);
     this.borrarCampos();
+    this.route.navigate(['login'])
   }
 
   borrarCampos(){

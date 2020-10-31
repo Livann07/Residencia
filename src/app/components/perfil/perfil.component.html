@@ -2,19 +2,20 @@
     <div class="row">
         <div class="col" id="barra">
             <mat-card class="mat-elevation-z3" id='barraMat'>
-                <div>
-                    Bienvenido: <br>                    
-                     Giovanni
-                     <hr>
+                <div id="nombre">
+                    <br> <div id="bien">Bienvenido:</div> 
+                    <div class="nombre"> {{this.ses.getNombreSesion()}} </div>
                 </div>
-                <br> 
-                <div>
+                <br>
+                <hr>
+                <div id="links">
                     <a class="nav-link"  [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a>
                     <a class="nav-link"  routerLink="login"> Generar Constancia</a>
                 </div>
                 <div style="text-align: center;" id='cerrar'>
-                    <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="login"> Cerrar Sesion</button>
+                    <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="login" id="boton" (click)="cerrarSesion()"> Cerrar Sesion</button>
                 </div>
+                <br>
             </mat-card>
         </div>
         <div class="col-md-10" id="contenido">

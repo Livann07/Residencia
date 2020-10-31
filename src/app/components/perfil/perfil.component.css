@@ -1,7 +1,13 @@
+.container-fluid{
+    width: 100% !important;
+    padding-left: 5%;
+    padding-right: 5%;
+}
 #barra{
     padding: 0; 
     margin: 0;
     height: initial;
+    border-right: 1px solid rgb(230, 229, 229);
 }
 #barraMat{
     height: 100%;
@@ -18,9 +24,68 @@
     padding: 0; 
     margin: 0;
     min-height: 100vh;
+    max-height: 100vh;
+    overflow: scroll;
 }
-.container-fluid{
-    width: 100% !important;
-    padding-left: 5%;
-    padding-right: 5%;
+#contenido::-webkit-scrollbar {
+    display: none;
+}
+#nombre{
+    height: 8.5%;
+    text-align: center;
+}
+#links{
+    height: 75.5%;
+}
+#cerrar{
+    height: initial;
+}
+.nav-link{
+    font-size: 16px;
+    color: blue;
+    font-family: 'Cairo', sans-serif;
+}
+.nav-link:hover{
+    background-color: rgb(88, 146, 255);
+    transition: ease-out 0.3s;
+    color: white;
+}
+#boton{
+    font-size: 16px;
+    width: 150px;
+}
+#bien{
+    font-family: 'Karla', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+.nombre{
+    font-family: 'Alegreya', serif;
+}
+@media only screen and (max-width: 767px) {
+    #barra{
+        height: 100%;
+        border-right: hidden;
+    }
+    #boton{
+        width: 200px !important;
+    }
+    #contenido{
+        border: 4px solid rgb(230, 229, 229);
+    }
+    #bien{
+        font-size: 24px;
+    }
+}
+@media only screen and (max-width: 1170px) {
+    #boton{
+        width: 110px;
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 873px){
+    #bien{
+        font-size: 20px;
+    }
+
 }
