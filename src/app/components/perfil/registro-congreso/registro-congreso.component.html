@@ -12,23 +12,24 @@
         <div class="estudiante" *ngSwitchCase='"Si"'>
             <h4>Ingresa los datos</h4>
             <form [formGroup]="congresoAlumnoForm" (ngSubmit)="enviarAlumnos()">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
                     <mat-label>No. Control</mat-label>
                     <input matInput #control placeholder="No. Control" formControlName='numControl' maxlength="8" minlength="8" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
                     <mat-hint align="end">{{control.value.length}} / 8</mat-hint>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                &nbsp;
+                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
                     <mat-label>Carrerra</mat-label>
                     <input matInput placeholder="Carrera" formControlName="carrera">
                 </mat-form-field>
                 <br>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
                     <mat-label>Celular</mat-label>
                     <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular1' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
                     <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
                 </mat-form-field>
-
-                <mat-form-field appearance="outline">
+                &nbsp;
+                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
                     <mat-label>Docente colaborador</mat-label>
                     <input matInput placeholder="Nombre del docente" formControlName='docente'>
                     <mat-hint align="end">Opcional</mat-hint>
@@ -77,13 +78,13 @@
         <div class="externo" *ngSwitchCase='"No"'>
             <h4>Ingresa los datos</h4>
             <form [formGroup]="congresoExternoForm" (ngSubmit)="enviarExternos()">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" [style.width.px]=230>
                     <mat-label>Celular</mat-label>
                     <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular2' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
                     <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
                 </mat-form-field>
-
-                <mat-form-field appearance="outline">
+                &nbsp;
+                <mat-form-field appearance="outline" [style.width.px]=230>
                     <mat-label>Institucion</mat-label>
                     <input matInput placeholder="Institucion" formControlName='institucion'>
                 </mat-form-field>

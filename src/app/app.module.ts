@@ -29,8 +29,8 @@ import { SearchComponent } from './components/search/search.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion/autorizar.service';
 
 
 // firebase
@@ -82,7 +82,9 @@ import { PonenteSeleccionComponent } from './components/ponentes/ponente-selecci
   providers: [
     DataDbService,
     DataPonentesService,
-    SesionService
+    SesionService,
+    AuthGuardService,
+    AuthGuardServiceFalse
   ],
   bootstrap: [AppComponent]
 })

@@ -8,13 +8,14 @@ import { PonenteComponent } from './components/ponentes/ponente/ponente.componen
 import { SearchComponent } from './components/search/search.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
+import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion/autorizar.service';
 
 export const ROUTES: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'about', component: AboutComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'perfil', component: PerfilComponent, children: [
+    {path: 'register', component: RegisterComponent, canActivate:[AuthGuardServiceFalse]},
+    {path: 'login', component: LoginComponent, canActivate:[AuthGuardServiceFalse] },
+    {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardService], children: [
         {path: 'congreso',component: RegistroCongresoComponent, outlet: 'congre', },
     ]},
     {path: 'ponentes', component: PonentesComponent},
