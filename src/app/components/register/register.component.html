@@ -1,75 +1,75 @@
 <div class="container">
-<br><br>
-<form [formGroup]="registerForm" style="text-align: center;">
+    <br><br>
+    <form [formGroup]="registerForm" style="text-align: center;">
 
 
 
-    <h1 class="animated fadeIn fast"> Registro </h1>
-    <hr><br>
-    <div class="divi">
-        <label class="texto">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </div>
-    <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Nombre" formControlName='nombre'>
-    </mat-form-field>
-    <br>
-    <div class="divi">
-        <label class="texto">Apellidos: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </div>
-    <mat-form-field appearance="outline"[style.width.%]=50 [style.min-width.px]=250>
-        <mat-label>Apellidos</mat-label>
-        <input matInput placeholder="Apellidos" formControlName='apellidos'>
-    </mat-form-field>
+        <h1 class="animated fadeIn fast"> Registro </h1>
+        <hr><br>
+        <div class="divi">
+            <label class="texto">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre" formControlName='nombre'>
+        </mat-form-field>
+        <br>
+        <div class="divi">
+            <label class="texto">Apellidos: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Apellidos</mat-label>
+            <input matInput placeholder="Apellidos" formControlName='apellidos'>
+        </mat-form-field>
 
-    <br>
+        <br>
 
-    <div class="divi">
-        <label class="texto">Correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </div>
-    <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-        <mat-label>Correo Electronico</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="correo" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-    <br>
-    <div class="divi">
-        <label class="texto">Confirmar correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </div>
-    <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-        <mat-label>Confirmar Correo Electronico</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
-        <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error>
-    </mat-form-field>
+        <div class="divi">
+            <label class="texto">Correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Correo Electronico</mat-label>
+            <input matInput placeholder="pat@example.com" formControlName="correo" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <div class="divi">
+            <label class="texto">Confirmar correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Confirmar Correo Electronico</mat-label>
+            <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
+            <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error>
+        </mat-form-field>
 
-    <br>
-    <div class="divi">
-        <label class="texto">Contraseña: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </div>
-    <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-        <mat-label>Ingresa una contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
-        <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <br>
+        <div class="divi">
+            <label class="texto">Contraseña: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Ingresa una contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
+            <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
-    </mat-form-field>
-    <br>
-    <div class="divi">
-        <label class="texto">Confirmar contraseña: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </div>
-    <mat-form-field appearance="outline" class="margen" [style.width.%]=50 [style.min-width.px]=250>
-        <mat-label>Confirma la contraseña</mat-label>
-        <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher">
-        <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
+        </mat-form-field>
+        <br>
+        <div class="divi">
+            <label class="texto">Confirmar contraseña: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" class="margen" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Confirma la contraseña</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher">
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
   <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
-        <mat-error *ngIf="registerForm.hasError('notSame')"> Las contraseñas no coinciden </mat-error>
-    </mat-form-field>
+            <mat-error *ngIf="registerForm.hasError('notSame')"> Las contraseñas no coinciden </mat-error>
+        </mat-form-field>
 
-    <br> <br>
-    <button mat-raised-button color="primary" type="submit" [disabled]='registerForm.invalid' (click)='enviar(registerForm.value)' [style.width.px]=200>Enviar</button>
-    <p></p>
-</form>
-<br><br><br>
+        <br> <br>
+        <button mat-raised-button color="primary" type="button" [disabled]='registerForm.invalid' (click)='enviar(registerForm.value)' [style.width.px]=200>Enviar</button>
+        <p></p>
+    </form>
+    <br><br><br>
 </div>

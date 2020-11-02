@@ -44,6 +44,10 @@ export class SesionService {
 
   logOut()
   {
+    sessionStorage.removeItem('correo');
+    sessionStorage.removeItem('nombre');
+    sessionStorage.removeItem('apellidos');
     sessionStorage.clear();
+
   }
 }

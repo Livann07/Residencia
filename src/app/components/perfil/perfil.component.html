@@ -3,14 +3,17 @@
         <div class="col" id="barra">
             <mat-card class="mat-elevation-z3" id='barraMat'>
                 <div id="nombre">
-                    <br> <div id="bien">Bienvenido:</div> 
-                    <div class="nombre"> {{this.ses.getNombreSesion()}} </div>
+                    <br>
+                    <div id="bien">Bienvenido:</div>
+                    <div class="nombre">
+                        {{this.ses.getNombreSesion()}}
+                    </div>
                 </div>
                 <br>
                 <hr>
                 <div id="links">
-                    <a class="nav-link"  [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a>
-                    <a class="nav-link"  routerLink="login"> Generar Constancia</a>
+                    <a class="nav-link" [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a>
+                    <a class="nav-link" routerLink="login"> Generar Constancia</a>
                 </div>
                 <div style="text-align: center;" id='cerrar'>
                     <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="login" id="boton" (click)="cerrarSesion()"> Cerrar Sesion</button>
@@ -19,7 +22,7 @@
             </mat-card>
         </div>
         <div class="col-md-10" id="contenido">
-            <mat-card class="mat-elevation-z3" id='barraCont'> 
+            <mat-card class="mat-elevation-z3" id='barraCont'>
                 <router-outlet name="congre"></router-outlet>
             </mat-card>
         </div>

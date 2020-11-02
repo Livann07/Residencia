@@ -5,6 +5,7 @@ import { DataDbService } from '../../services/data-db.service';
 import { usersU } from '../../models/users.interface';
 import { Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
+import Swal from 'sweetalert2';
 
 
 
@@ -97,7 +98,14 @@ export class RegisterComponent implements OnInit {
 
     this.dbData.saveUsers(nuevo);
     this.borrarCampos();
-    this.route.navigate(['login'])
+    Swal.fire({
+      allowOutsideClick: false,
+      title: 'Usuario registrado con éxito',
+      icon: 'success', 
+      text: 'Inicia sesión para ingresar a tu cuenta',
+      timer: 3000
+    });
+    this.route.navigate(['home']);
   }
 
   borrarCampos(){
