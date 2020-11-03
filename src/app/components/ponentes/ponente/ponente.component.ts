@@ -17,7 +17,6 @@ export class PonenteComponent {
     
     this.activatedRoute.params.subscribe(params =>{
       this.ponente = this._dbPonentes.getPonente(params['id']);
-      console.log(this.ponente);
     });
   }
 

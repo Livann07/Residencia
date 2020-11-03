@@ -18,7 +18,7 @@ export class PonentesComponent implements OnInit {
 
   ngOnInit(): void {
     this.ponentes = this._ponentesService.getPonentes();
-    console.log(this.ponentes);
+    //console.log(this.ponentes);
   }
 
   verPonente(idx: number){

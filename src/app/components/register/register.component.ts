@@ -11,18 +11,18 @@ import Swal from 'sweetalert2';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty && control.parent.hasError('notSame'));
+    //const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.touched && control.parent && control.parent.invalid && control.parent.dirty && control.parent.hasError('notSame'));
 
-    return control.parent.errors && control.touched && ( invalidCtrl || invalidParent );
+    return invalidParent;
   }
 }
 export class MyErrorStateMatcher2 implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty && control.parent.hasError('notSame2'));
+    //const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.touched && control.parent && control.parent.invalid && control.parent.dirty && control.parent.hasError('notSame2'));
 
-    return control.parent.errors && control.touched && ( invalidCtrl || invalidParent );
+    return invalidParent
   }
 }
 
@@ -86,8 +86,6 @@ export class RegisterComponent implements OnInit {
   }
 
   enviar(values: usersU){
-    console.log(values);
-    
 
     const nuevo = {
       nombre: values.nombre,

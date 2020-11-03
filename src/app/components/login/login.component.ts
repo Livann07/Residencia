@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormControlDirective, NgForm, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { DataDbService } from '../../services/data-db.service';
 import { SesionService } from '../../services/sesion.service';
 import { Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,14 @@ export class LoginComponent implements OnInit {
   datos: any;
   loginForm: FormGroup;
   sesionActiva = this.sesi.verificarSesion();
+  clienteSubscription: Subscription;
   
 
   constructor(private dbData: DataDbService, private _builder: FormBuilder, public sesi: SesionService, private snackBar:MatSnackBar,private router: Router) { 
     this.loginForm = this._builder.group({
       correo: [''],
       contra: ['']
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   recibir(values: any)
   {
-    this.dbData.getUser().subscribe(resp =>{
+    this.clienteSubscription = this.dbData.getUser().subscribe(resp =>{
       this.datos = resp.map((e: any) => {
         return {
           nombre: e.payload.doc.data()['nombre'],
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit {
         };
       })
       this.mostrar(values);
+      this.clienteSubscription.unsubscribe();
     });
   }
 

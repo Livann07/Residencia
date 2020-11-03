@@ -21,8 +21,8 @@ export class PonenteSeleccionComponent implements OnInit {
   checked = false;
 
   changed(){
-    console.log(this.ponente.nombre);
-    console.log(this.checked);
+    //console.log(this.ponente.nombre);
+    //console.log(this.checked);
   }
 
 }
