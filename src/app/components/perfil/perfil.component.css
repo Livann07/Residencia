@@ -44,23 +44,33 @@
 }
 
 #links {
-    height: 75.5%;
+    height: 72.5%;
 }
 
 #cerrar {
     height: initial;
 }
-
+.contenedor-links{
+    display: flex;
+}
 .nav-link {
     font-size: 16px;
     color: blue;
     font-family: 'Cairo', sans-serif;
+    display: flex;
 }
-
+.contenedor-icons{
+    align-self: center !important;
+}
+.contenido-link{
+    display: contents;
+}
 .nav-link:hover {
     background-color: rgb(88, 146, 255);
     transition: ease-out 0.3s;
     color: white;
+    height: 100%;
+    width: 100%;
 }
 
 #boton {
@@ -99,7 +109,10 @@ i {
         border: 4px solid rgb(230, 229, 229);
     }
     #bien {
-        font-size: 24px;
+        font-size: 24px !important;
+    }
+    .contenedor-links{
+        flex-flow: inherit !important;
     }
 }
 
@@ -110,8 +123,17 @@ i {
     }
 }
 
-@media only screen and (max-width: 873px) {
+@media only screen and (max-width: 967px) {
     #bien {
         font-size: 20px;
+    }
+    .contenedor-icons{
+        font-size: 14px;
+    }
+    .contenido-link{
+        font-size: 14px;
+    }
+    .contenedor-links{
+        flex-flow: column;
     }
 }

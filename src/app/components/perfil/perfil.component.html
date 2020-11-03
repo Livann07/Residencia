@@ -12,11 +12,15 @@
                 <br>
                 <hr>
                 <div id="links">
-                    <i class="fas fa-sign-in-alt mr-3"></i><a class="nav-link" [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a>
-                    <br>
-                    <br>
-                    <i class="fas fa-print mr-3"></i> <a class="nav-link" routerLink="login"> Generar Constancia</a>
+                    <div class='contenedor-links'>
+                        <div class="contenedor-icons"><i class="fas fa-sign-in-alt mr-3"></i></div>
+                        <div class="contenido-link"><a class="nav-link" [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a></div>
+                    </div>
+                    <div class='contenedor-links'>
+                        <div class="contenedor-icons"><i class="fas fa-print mr-3"></i></div><div class="contenido-link"><a class="nav-link" routerLink="login"> Generar Constancia</a></div>
+                    </div>
                 </div>
+                <br>
                 <div style="text-align: center;" id='cerrar'>
                     <button class="btn btn-outline-danger my-2 my-sm-0" routerLink="login" id="boton" (click)="cerrarSesion()"> Cerrar Sesion</button>
                 </div>
