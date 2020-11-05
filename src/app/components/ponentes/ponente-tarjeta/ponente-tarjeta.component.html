@@ -2,8 +2,8 @@
     <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
     <div class="card-body">
         <h5 class="card-title">{{ ponente.nombre }}</h5>
-        <p class="card-text">{{ ponente.desConferencia }}</p>
-        <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
+        <p class="card-text text-justify">{{ ponente.desConferencia }}</p>
+        <p class="card-text"><small class="text-muted">{{ponente.tipo}}</small></p>
 
         <button (click)="verPonente()" type="button" class="btn btn-outline-primary btn-block">
             Ver más...

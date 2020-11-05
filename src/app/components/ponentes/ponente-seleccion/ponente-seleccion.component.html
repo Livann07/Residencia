@@ -3,7 +3,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ ponente.nombre }}</h5>
         <p class="card-text">{{ ponente.desConferencia }}</p>
-        <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
+        <p class="card-text"><small class="text-muted">{{ponente.tipo}}</small></p>
         <mat-slide-toggle [(ngModel)]="checked" class="example-margin" [color]="color" (change)="changed()">
             Asistir a conferencia {{checked}}
         </mat-slide-toggle>

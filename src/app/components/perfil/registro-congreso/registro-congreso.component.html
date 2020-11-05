@@ -43,7 +43,7 @@
 
 
 
-                <h4 class="animated fadeIn">Ponentes <small>Selecciona tus ponentes favoritos</small>
+                <h4 class="animated fadeIn">Conferencistas <small>Selecciona tus conferencistas favoritos</small>
                     <!--<button type="button" class="btn btn-outline-primary" style="float: right">Guardar</button>--></h4>
 
                 <br>
@@ -51,7 +51,7 @@
                     <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
                         <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
                         <div class="card-body">
-                            <h5 class="card-title">{{ ponente.nombre }}</h5>
+                            <h5 class="card-title">{{ ponente.name }}</h5>
                             <p class="card-text">{{ ponente.desConferencia }}</p>
                             <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
                             <!-- <mat-slide-toggle [checked]="ponente.completed" formControlName="i" class="example-margin" [color]="color" (change)="changed()">
@@ -94,7 +94,7 @@
                     <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
                 </section>-->
 
-                <h4 class="animated fadeIn">Ponentes <small>Selecciona tus ponentes favoritos</small>
+                <h4 class="animated fadeIn">Conferencistas <small>Selecciona tus conferencistas favoritos</small>
                     <!--<button type="button" class="btn btn-outline-primary" style="float: right">Guardar</button>--></h4>
                 <hr>
 
@@ -102,7 +102,7 @@
                     <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
                         <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
                         <div class="card-body">
-                            <h5 class="card-title">{{ ponente.nombre }}</h5>
+                            <h5 class="card-title">{{ ponente.name }}</h5>
                             <p class="card-text">{{ ponente.desConferencia }}</p>
                             <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
                             <!-- <mat-slide-toggle [checked]="ponente.completed" formControlName="i" class="example-margin" [color]="color" (change)="changed()">

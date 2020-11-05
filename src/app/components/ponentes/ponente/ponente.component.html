@@ -1,31 +1,42 @@
 <div class="container">
-<br><br>
-<h1 class="animated fadeIn">{{ponente.nombre | uppercase}}</h1>
+    <br><br>
+    <h1 class="animated fadeIn">{{ponente.nombre | uppercase}}</h1>
 
-<hr>
+    <hr>
 
-<div class="row animated fadeIn fast">
+    <div class="row animated fadeIn fast">
 
-    <div class="col-md-4">
+        <div class="col-md-4 ">
 
-        <img [src]="ponente.img" class="img-fluid" [alt]="ponente.nombre">
-        <br><br>
-        <a [routerLink]="['/ponentes']" class="btn btn-outline-danger btn-block">Regresar a Ponentes</a>
+            <img [src]="ponente.img" class="img-fluid" [alt]="ponente.nombre"><br><br><br>
+            <img src="assets/img/congreso.jpg" class="img-fluid">
+            <br><br>
+            <a [routerLink]="['/ponentes']" class="btn btn-outline-danger btn-block">Regresar a Personalidades</a>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <h3>{{ponente.nomConferencia}}</h3>
+
+            <hr>
+            <p class="text-justify">
+                {{ponente.datosPonente}}
+            </p>
+            <p *ngIf="ponente.datosPonente1" class="text-justify">
+                {{ponente.datosPonente1}}
+            </p>
+            <p *ngIf="ponente.datosPonente1" class="text-justify">
+                {{ponente.datosPonente2}}
+            </p>
+            <p *ngIf="ponente.datosPonente1" class="text-justify">
+                {{ponente.datosPonente3}}
+            </p>
+
+        </div>
+
 
     </div>
 
-    <div class="col-md-8">
-
-        <h3>{{ponente.nombre}}</h3>
-        <hr>
-        <p>
-            {{ponente.desConferencia}}
-        </p>
-
-    </div>
-
-
-</div>
-
-<br><br>
+    <br><br>
 </div>

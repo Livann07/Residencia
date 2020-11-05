@@ -22,8 +22,10 @@
     </div>
 </nav>-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="assets/img/tnm.png" width="30" height="30" alt="" loading="lazy"> Congreso Internacional
+    <a class="navbar-brand ml-3" href="#">
+        <img src="assets/img/tecnm.png" width="80" height="30" alt="" loading="lazy"> Congreso&nbsp;
+        <img src="assets/img/tnm.png" width="30" height="30" alt="" loading="lazy">
+
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,7 +51,7 @@
                     <a class="nav-link" routerLink="about">Acerca de</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['ponentes']">Ponentes</a>
+                    <a class="nav-link" [routerLink]="['ponentes']">Personalidades</a>
                 </li>
 
 
@@ -58,10 +60,12 @@
 
 
         <div class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar ponente" aria-label="Search" (keyup.enter)="buscarPonente(buscarTexto.value)" #buscarTexto>
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar participantes" aria-label="Search" (keyup.enter)="buscarPonente(buscarTexto.value)" #buscarTexto>
             <button (click)="buscarPonente(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar
-            </button>
+            </button> &nbsp;&nbsp;&nbsp;
         </div>
+
+
 
     </div>
 
