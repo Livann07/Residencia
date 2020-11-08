@@ -1,133 +1,144 @@
-<br><br>
-<div class="container">
-    <h1>Registrate para el congreso</h1>
-    <hr>
-    <label id="example-radio-group-label">¿Eres estudiante del ITLM?</label>
-    <mat-radio-group aria-label="¿Eres estudiante del ITLM?" class="botones" [(ngModel)]="opcion">
-        <mat-radio-button value="Si">Si, lo soy</mat-radio-button>
-        <mat-radio-button value="No">No, vengo de otra escuela</mat-radio-button>
-    </mat-radio-group>
-    <hr>
-    <div [ngSwitch]="opcion">
-        <div class="estudiante" *ngSwitchCase='"Si"'>
-            <h4>Ingresa los datos</h4>
-            <form [formGroup]="congresoAlumnoForm" (ngSubmit)="enviarAlumnos()">
-                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
-                    <mat-label>No. Control</mat-label>
-                    <input matInput #control placeholder="No. Control" formControlName='numControl' maxlength="8" minlength="8" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
-                    <mat-hint align="end">{{control.value.length}} / 8</mat-hint>
-                </mat-form-field>
-                &nbsp;
-                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
-                    <mat-label>Carrerra</mat-label>
-                    <input matInput placeholder="Carrera" formControlName="carrera">
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
-                    <mat-label>Celular</mat-label>
-                    <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular1' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
-                    <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
-                </mat-form-field>
-                &nbsp;
-                <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
-                    <mat-label>Docente colaborador</mat-label>
-                    <input matInput placeholder="Nombre del docente" formControlName='docente'>
-                    <mat-hint align="end">Opcional</mat-hint>
-                </mat-form-field>
-                <br>
-                <hr>
-                <!--<label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>
-                <section class="conferencias" formArrayName="confeMarcadas" *ngFor="let item of confeMarcadasCongresoAlumosFormArray.controls; let i = index">
-                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
-                </section>-->
+<div [ngSwitch]="isParticipante">
+    <br><br>
+    <div class="container animated fadeIn fast" *ngSwitchCase='true'>
+        <div class="jumbotron">
+            <h1 class="display-4">Ya estas registrado para el congreso</h1>
+            <p class="lead">Espera las fechas indicadas para no perderte ninguna actividad</p>
+        </div>
+    </div>
+    <div class="container animated fadeIn fast" *ngSwitchCase='false'>
+        <h1>Registrate para el congreso</h1>
+        <hr>
+        <label id="example-radio-group-label">¿Eres estudiante del ITLM?</label>
+        <mat-radio-group aria-label="¿Eres estudiante del ITLM?" class="botones" [(ngModel)]="opcion">
+            <mat-radio-button value="Si">Si, lo soy</mat-radio-button>
+            <mat-radio-button value="No">No, vengo de otra escuela</mat-radio-button>
+        </mat-radio-group>
+        <hr>
+        <div [ngSwitch]="opcion">
+            <div class="estudiante animated fadeIn fast" *ngSwitchCase='"Si"'>
+                <h4>Ingresa los datos</h4>
+                <form [formGroup]="congresoAlumnoForm" (ngSubmit)="enviarAlumnos()">
+                    <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
+                        <mat-label>No. Control</mat-label>
+                        <input matInput #control placeholder="No. Control" formControlName='numControl' maxlength="8" minlength="8" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+                        <mat-hint align="end">{{control.value.length}} / 8</mat-hint>
+                    </mat-form-field>
+                    &nbsp;
+                    <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
+                        <mat-label>Carrerra</mat-label>
+                        <input matInput placeholder="Carrera" formControlName="carrera">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
+                        <mat-label>Celular</mat-label>
+                        <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular1' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+                        <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
+                    </mat-form-field>
+                    &nbsp;
+                    <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
+                        <mat-label>Docente colaborador</mat-label>
+                        <input matInput placeholder="Nombre del docente" formControlName='docente'>
+                        <mat-hint align="end">Opcional</mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <hr>
+                    <!--<label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>
+                    <section class="conferencias" formArrayName="confeMarcadas" *ngFor="let item of confeMarcadasCongresoAlumosFormArray.controls; let i = index">
+                        <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
+                    </section>-->
 
 
 
-                <h4 class="animated fadeIn">Conferencistas <small>Selecciona tus conferencistas favoritos</small>
-                    <!--<button type="button" class="btn btn-outline-primary" style="float: right">Guardar</button>--></h4>
+                    <h4 class="animated fadeIn">Conferencistas <small>Selecciona tus conferencistas favoritos</small>
+                        <!--<button type="button" class="btn btn-outline-primary" style="float: right">Guardar</button>--></h4>
 
-                <br>
-                <div class="card-columns animated fadeIn fast">
-                    <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
-                        <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ ponente.name }}</h5>
-                            <p class="card-text">{{ ponente.desConferencia }}</p>
-                            <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
-                            <!-- <mat-slide-toggle [checked]="ponente.completed" formControlName="i" class="example-margin" [color]="color" (change)="changed()">
-                                Asistir a conferencia
-                            </mat-slide-toggle>-->
-                            <mat-checkbox [checked]="ponente.completed" [formControlName]="i">Asistir</mat-checkbox>
+                    <br>
+                    <div class="card-columns animated fadeIn fast">
+                        <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
+                            <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ ponente.name }}</h5>
+                                <p class="card-text">{{ ponente.desConferencia }}</p>
+                                <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
+                                <!-- <mat-slide-toggle [checked]="ponente.completed" formControlName="i" class="example-margin" [color]="color" (change)="changed()">
+                                    Asistir a conferencia
+                                </mat-slide-toggle>-->
+                                <mat-checkbox [checked]="ponente.completed" [formControlName]="i">Asistir</mat-checkbox>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
+                    <hr>
 
 
-                <!--<label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>-->
-                <h4>Selecciona los talleres a los que te gustar&iacute;a asistir</h4>
-                <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumosFormArray.controls; let i = index">
-                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{talleres[i].name}} </mat-checkbox>
-                </section>
-                <br><br><br>
-                <button mat-raised-button color="primary" type="submit" [disabled]='congresoAlumnoForm.invalid'>Registrarse</button>
-                <br><br><br>
-            </form>
-            <br>
-        </div>
-        <div class="externo" *ngSwitchCase='"No"'>
-            <h4>Ingresa los datos</h4>
-            <form [formGroup]="congresoExternoForm" (ngSubmit)="enviarExternos()">
-                <mat-form-field appearance="outline" [style.width.px]=230>
-                    <mat-label>Celular</mat-label>
-                    <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular2' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
-                    <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
-                </mat-form-field>
-                &nbsp;
-                <mat-form-field appearance="outline" [style.width.px]=230>
-                    <mat-label>Institucion</mat-label>
-                    <input matInput placeholder="Institucion" formControlName='institucion'>
-                </mat-form-field>
+                    <!--<label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>-->
+                    <h4>Selecciona los talleres a los que te gustar&iacute;a asistir</h4>
+                    <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumosFormArray.controls; let i = index">
+                        <mat-checkbox [checked]=item.completed [formControlName]="i"> {{talleres[i].name}} </mat-checkbox>
+                    </section>
+                    <br><br><br>
+                    <button mat-raised-button color="primary" type="submit" [disabled]='congresoAlumnoForm.invalid'>Registrarse</button>
+                    <br><br><br>
+                </form>
                 <br>
-                <!-- <label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>
-                <section class="conferencias" formArrayName="confeMarcadas" *ngFor="let item of confeMarcadasCongresoAlumExternoFormArray.controls; let i = index">
-                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
-                </section>-->
+            </div>
+            <div class="externo animated fadeIn fast" *ngSwitchCase='"No"'>
+                <h4>Ingresa los datos</h4>
+                <form [formGroup]="congresoExternoForm" (ngSubmit)="enviarExternos()">
+                    <mat-form-field appearance="outline" [style.width.px]=230>
+                        <mat-label>Celular</mat-label>
+                        <input onlyNumber matInput #cel placeholder="Celular" formControlName='celular2' maxlength="10" minlength="10" autocomplete="off" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+                        <mat-hint align="end">{{cel.value.length}} / 10</mat-hint>
+                    </mat-form-field>
+                    &nbsp;
+                    <mat-form-field appearance="outline" [style.width.px]=230>
+                        <mat-label>Institucion</mat-label>
+                        <input matInput placeholder="Institucion" formControlName='institucion'>
+                    </mat-form-field>
+                    <br>
+                    <!-- <label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>
+                    <section class="conferencias" formArrayName="confeMarcadas" *ngFor="let item of confeMarcadasCongresoAlumExternoFormArray.controls; let i = index">
+                        <mat-checkbox [checked]=item.completed [formControlName]="i"> {{conferencias[i].name}} </mat-checkbox>
+                    </section>-->
 
-                <h4 class="animated fadeIn">Conferencistas <small>Selecciona tus conferencistas favoritos</small>
-                    <!--<button type="button" class="btn btn-outline-primary" style="float: right">Guardar</button>--></h4>
-                <hr>
+                    <h4 class="animated fadeIn">Conferencistas <small>Selecciona tus conferencistas favoritos</small>
+                        <!--<button type="button" class="btn btn-outline-primary" style="float: right">Guardar</button>--></h4>
+                    <hr>
 
-                <div class="card-columns animated fadeIn fast">
-                    <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
-                        <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ ponente.name }}</h5>
-                            <p class="card-text">{{ ponente.desConferencia }}</p>
-                            <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
-                            <!-- <mat-slide-toggle [checked]="ponente.completed" formControlName="i" class="example-margin" [color]="color" (change)="changed()">
-                                Asistir a conferencia
-                            </mat-slide-toggle>-->
-                            <mat-checkbox [checked]="ponente.completed" [formControlName]="i">Asistir</mat-checkbox>
+                    <div class="card-columns animated fadeIn fast">
+                        <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
+                            <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ ponente.name }}</h5>
+                                <p class="card-text">{{ ponente.desConferencia }}</p>
+                                <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
+                                <!-- <mat-slide-toggle [checked]="ponente.completed" formControlName="i" class="example-margin" [color]="color" (change)="changed()">
+                                    Asistir a conferencia
+                                </mat-slide-toggle>-->
+                                <mat-checkbox [checked]="ponente.completed" [formControlName]="i">Asistir</mat-checkbox>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
+                    <hr>
 
 
 
-                <!--<label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>-->
-                <h4>Selecciona los talleres a los que te gustar&iacute;a asistir</h4>
-                <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
-                    <mat-checkbox [checked]=item.completed [formControlName]="i"> {{talleres[i].name}} </mat-checkbox>
-                </section>
-                <br><br><br>
-                <button mat-raised-button color="primary" type="submit" [disabled]='congresoExternoForm.invalid'>Registrarse</button>
-                <br><br><br>
-            </form>
-            <br>
+                    <!--<label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>-->
+                    <h4>Selecciona los talleres a los que te gustar&iacute;a asistir</h4>
+                    <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
+                        <mat-checkbox [checked]=item.completed [formControlName]="i"> {{talleres[i].name}} </mat-checkbox>
+                    </section>
+                    <br><br><br>
+                    <button mat-raised-button color="primary" type="submit" [disabled]='congresoExternoForm.invalid'>Registrarse</button>
+                    <br><br><br>
+                </form>
+                <br>
+            </div>
+            <div *ngSwitchDefault>
+            </div>
         </div>
-        <div *ngSwitchDefault>
-        </div>
+    </div>
+    <div *ngSwitchDefault>
+
     </div>
 </div>

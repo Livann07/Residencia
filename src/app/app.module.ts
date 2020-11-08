@@ -31,7 +31,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion/autorizar.service';
-
+import { ConstanciaComponent } from './components/perfil/constancia/constancia.component';
 
 // firebase
 import { AngularFireModule} from '@angular/fire';
@@ -58,6 +58,7 @@ import { PonenteSeleccionComponent } from './components/ponentes/ponente-selecci
     PerfilComponent,
     RegistroCongresoComponent,
     PonenteSeleccionComponent,
+    ConstanciaComponent,
   ],
   imports: [
     BrowserModule,

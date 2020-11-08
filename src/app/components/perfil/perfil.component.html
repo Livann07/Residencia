@@ -14,10 +14,11 @@
                 <div id="links">
                     <div class='contenedor-links'>
                         <div class="contenedor-icons"><i class="fas fa-sign-in-alt mr-3"></i></div>
-                        <div class="contenido-link"><a class="nav-link" [routerLink]='[{ outlets: { congre: ["congreso"] } }]'> Registrarse para el congreso</a></div>
+                        <div class="contenido-link"><a class="nav-link" [routerLink]='[{ outlets: { seccion: ["congreso"] } }]'> Registrarse para el congreso</a></div>
                     </div>
                     <div class='contenedor-links'>
-                        <div class="contenedor-icons"><i class="fas fa-print mr-3"></i></div><div class="contenido-link"><a class="nav-link" routerLink="login"> Generar Constancia</a></div>
+                        <div class="contenedor-icons"><i class="fas fa-print mr-3"></i></div>
+                        <div class="contenido-link"><a class="nav-link" [routerLink]='[{ outlets: { seccion: ["constancia"] } }]'> Generar Constancia</a></div>
                     </div>
                 </div>
                 <br>
@@ -29,7 +30,7 @@
         </div>
         <div class="col-md-10" id="contenido">
             <mat-card class="mat-elevation-z3" id='barraCont'>
-                <router-outlet name="congre"></router-outlet>
+                <router-outlet name="seccion"></router-outlet>
             </mat-card>
         </div>
     </div>

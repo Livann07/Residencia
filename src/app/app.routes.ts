@@ -8,6 +8,7 @@ import { PonenteComponent } from './components/ponentes/ponente/ponente.componen
 import { SearchComponent } from './components/search/search.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
+import { ConstanciaComponent } from './components/perfil/constancia/constancia.component';
 import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion/autorizar.service';
 
 export const ROUTES: Routes = [
@@ -16,7 +17,8 @@ export const ROUTES: Routes = [
     {path: 'register', component: RegisterComponent, canActivate:[AuthGuardServiceFalse]},
     {path: 'login', component: LoginComponent, canActivate:[AuthGuardServiceFalse] },
     {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardService], children: [
-        {path: 'congreso',component: RegistroCongresoComponent, outlet: 'congre', },
+        {path: 'congreso',component: RegistroCongresoComponent, outlet: 'seccion', },
+        {path: 'constancia',component: ConstanciaComponent, outlet: 'seccion', },
     ]},
     {path: 'ponentes', component: PonentesComponent},
     {path: 'ponente/:id', component: PonenteComponent},

@@ -3,8 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { SesionService } from '../../../services/sesion.service';
 import { DataDbService } from '../../../services/data-db.service';
 import { DataPonentesService, Ponentes } from '../../../services/ponentes/data-ponentes.service';
-
-
+import { Subscription } from 'rxjs';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'registro-congreso',
@@ -21,6 +21,9 @@ export class RegistroCongresoComponent implements OnInit {
   congresoAlumnoForm: FormGroup;
   congresoExternoForm: FormGroup;
   opcion: string;
+  clienteSubscription: Subscription;
+  isParticipante: boolean;
+
   ponentess: any[] = [
     {
       name: 'Dr. Diego Tlapa',
@@ -173,7 +176,7 @@ export class RegistroCongresoComponent implements OnInit {
   ];
 
  
-  constructor(private _alumnoBuilder: FormBuilder, private _externoBuilder: FormBuilder, public sesi: SesionService, private dbData: DataDbService, private _ponentesS: DataPonentesService) { 
+  constructor(private _alumnoBuilder: FormBuilder, private _externoBuilder: FormBuilder, public sesi: SesionService, private dbData: DataDbService, private _ponentesS: DataPonentesService, private router: Router) { 
     this.congresoAlumnoForm =this. _alumnoBuilder.group({
       numControl: ["", Validators.required],
       carrera: ["", Validators.required],
@@ -195,6 +198,8 @@ export class RegistroCongresoComponent implements OnInit {
     //internos
     this.addCheckboxesOfconfeMarcadasAlumno();
     this.addCheckboxesOfTalleresMarcadasAlumno();
+
+    this.comprobarRegistro();
   }
 
   ngOnInit(): void {
@@ -278,6 +283,13 @@ export class RegistroCongresoComponent implements OnInit {
       talleres: this.regresarTalleresAlumExternoForm(),
     }
     this.dbData.saveAlumExterno(ext);
+
+    const partExt = {
+      correo: this.sesi.getCorreoSesion(),
+      participante: 'alumExterno',
+    }
+    this.dbData.saveParticipante(partExt);
+    window.location.reload();
   }
   enviarAlumnos()
   {
@@ -292,6 +304,45 @@ export class RegistroCongresoComponent implements OnInit {
       talleres: this.regresarTalleresAlumnosForm(),
     }
     this.dbData.saveAlumnos(alum);
+
+    const partInt = {
+      correo: this.sesi.getCorreoSesion(),
+      participante: 'alumInterno',
+    }
+    this.dbData.saveParticipante(partInt);
+    window.location.reload();
+  }
+  comprobarRegistro(){
+    this.recibirDatos();
   }
 
+  recibirDatos()
+  {
+    var datos: any;
+
+    this.clienteSubscription = this.dbData.getparticipantes().subscribe(resp =>{
+      datos = resp.map((e: any) => {
+        return {
+          correo: e.payload.doc.data()['correo'],
+        };
+      })
+      this.clienteSubscription.unsubscribe();
+      this.compararDatos(datos);
+    });
+  }
+  compararDatos(values: any)
+  { var encontro = false;
+    values.forEach(element => {
+      if(element.correo == this.sesi.getCorreoSesion())
+      {
+        this.isParticipante = true;
+        encontro = true;
+        localStorage.setItem('participa', 'true');
+      }
+    });
+    if(encontro == false)
+    {
+      this.isParticipante = false;
+    }
+  }
 }
