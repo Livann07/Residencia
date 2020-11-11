@@ -40,6 +40,7 @@ import { environment } from '../environments/environment';
 import { DataDbService } from './services/data-db.service';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
 import { PonenteSeleccionComponent } from './components/ponentes/ponente-seleccion/ponente-seleccion.component';
+import { ProgramaComponent } from './components/perfil/programa/programa.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { PonenteSeleccionComponent } from './components/ponentes/ponente-selecci
     RegistroCongresoComponent,
     PonenteSeleccionComponent,
     ConstanciaComponent,
+    ProgramaComponent,
   ],
   imports: [
     BrowserModule,

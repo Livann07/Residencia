@@ -17,7 +17,12 @@
 
         <div class="col-md-8">
 
-            <h3>{{ponente.nomConferencia}}</h3>
+            <h3 class="text-justify">{{ponente.nomConferencia}}</h3>
+            <h5>Horario:<br>
+                <small>{{ponente.fecha}}</small>
+                <small *ngIf="ponente.fecha1"><br>{{ponente.fecha1}}<br></small>
+                <small *ngIf="ponente.fecha2">{{ponente.fecha2}}</small>
+            </h5>
 
             <hr>
             <p class="text-justify">

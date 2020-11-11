@@ -10,6 +10,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
 import { ConstanciaComponent } from './components/perfil/constancia/constancia.component';
 import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion/autorizar.service';
+import { ProgramaComponent } from './components/perfil/programa/programa.component';
 
 export const ROUTES: Routes = [
     {path: 'home', component: HomeComponent},
@@ -19,6 +20,7 @@ export const ROUTES: Routes = [
     {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuardService], children: [
         {path: 'congreso',component: RegistroCongresoComponent, outlet: 'seccion', },
         {path: 'constancia',component: ConstanciaComponent, outlet: 'seccion', },
+        {path: 'programa',component: ProgramaComponent, outlet: 'seccion', },
     ]},
     {path: 'ponentes', component: PonentesComponent},
     {path: 'ponente/:id', component: PonenteComponent},

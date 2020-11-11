@@ -50,23 +50,28 @@
 #cerrar {
     height: initial;
 }
-.contenedor-links{
+
+.contenedor-links {
     display: flex;
 }
+
 .nav-link {
     font-size: 16px;
-    color: blue;
+    color: rgb(27 57 106);
     font-family: 'Cairo', sans-serif;
     display: flex;
 }
-.contenedor-icons{
+
+.contenedor-icons {
     align-self: center !important;
 }
-.contenido-link{
+
+.contenido-link {
     display: contents;
 }
+
 .nav-link:hover {
-    background-color: rgb(88, 146, 255);
+    background-color: rgb(27 57 106);
     transition: ease-out 0.3s;
     color: white;
     height: 100%;
@@ -107,11 +112,12 @@ i {
     }
     #contenido {
         border: 4px solid rgb(230, 229, 229);
+        max-height: none;
     }
     #bien {
         font-size: 24px !important;
     }
-    .contenedor-links{
+    .contenedor-links {
         flex-flow: inherit !important;
     }
 }
@@ -127,13 +133,13 @@ i {
     #bien {
         font-size: 20px;
     }
-    .contenedor-icons{
+    .contenedor-icons {
         font-size: 14px;
     }
-    .contenido-link{
+    .contenido-link {
         font-size: 14px;
     }
-    .contenedor-links{
+    .contenedor-links {
         flex-flow: column;
     }
 }

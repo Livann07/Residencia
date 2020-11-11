@@ -28,7 +28,7 @@
             <label class="texto">Correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
         <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-            <mat-label>Correo Electronico</mat-label>
+            <mat-label>Correo Electr&oacute;nico</mat-label>
             <input matInput placeholder="pat@example.com" formControlName="correo" required>
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
@@ -37,17 +37,17 @@
             <label class="texto">Confirmar correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
         <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-            <mat-label>Confirmar Correo Electronico</mat-label>
+            <mat-label>Confirmar Correo Electr&oacute;nico</mat-label>
             <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
             <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error>
         </mat-form-field>
 
         <br>
         <div class="divi">
-            <label class="texto">Contraseña: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label class="texto">Contrase&ntilde;a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
         <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
-            <mat-label>Ingresa una contraseña</mat-label>
+            <mat-label>Ingresa una contrase&ntilde;a</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass'>
             <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -56,15 +56,15 @@
         </mat-form-field>
         <br>
         <div class="divi">
-            <label class="texto">Confirmar contraseña: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label class="texto">Confirmar contrase&ntilde;a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
         <mat-form-field appearance="outline" class="margen" [style.width.%]=50 [style.min-width.px]=250>
-            <mat-label>Confirma la contraseña</mat-label>
+            <mat-label>Confirma la contrase&ntilde;a</mat-label>
             <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher">
             <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
   <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
   </button>
-            <mat-error *ngIf="registerForm.hasError('notSame')"> Las contraseñas no coinciden </mat-error>
+            <mat-error *ngIf="registerForm.hasError('notSame')"> Las contrase&ntilde;as no coinciden </mat-error>
         </mat-form-field>
 
         <br> <br>

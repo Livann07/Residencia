@@ -1,16 +1,11 @@
-.forma {
-    display: grid;
-    height: 350px;
-    justify-content: center;
-}
-
-.btn-outline-inicio {
+.btn-outline-busqueda {
+    font-weight: 600;
     color: rgb(27 57 106);
     border-color: rgb(27 57 106) !important;
     background-color: white;
 }
 
-.btn-outline-inicio:hover {
+.btn-outline-busqueda:hover {
     border-color: rgb(27 57 106);
     background-color: rgb(27 57 106) !important;
     color: white;

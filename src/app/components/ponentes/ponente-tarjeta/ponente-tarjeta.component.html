@@ -1,11 +1,17 @@
 <div class="card animated fadeIn fast">
     <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
     <div class="card-body">
-        <h5 class="card-title">{{ ponente.nombre }}</h5>
+        <h5 class="card-title text-justify">{{ ponente.nombre }}</h5>
         <p class="card-text text-justify">{{ ponente.desConferencia }}</p>
-        <p class="card-text"><small class="text-muted">{{ponente.tipo}}</small></p>
+        <p class="card-text">
+            <small class="text-muted">{{ponente.tipo | uppercase}}<br>
+                                      <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponente.fecha}}
+            <p *ngIf="ponente.fecha2"><span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponente.fecha1}} <br>
+                                      <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponente.fecha2}}</p>
+            </small>
+        </p>
 
-        <button (click)="verPonente()" type="button" class="btn btn-outline-primary btn-block">
+        <button (click)="verPonente()" type="button" class="btn btn-outline-seleccion btn-block">
             Ver más...
         </button>
 

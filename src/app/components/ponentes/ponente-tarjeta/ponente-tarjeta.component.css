@@ -1,0 +1,15 @@
+.btn-outline-seleccion {
+    color: rgb(27 57 106) !important;
+    border-color: rgb(27 57 106) !important;
+    background-color: white;
+}
+
+.btn-outline-seleccion:hover {
+    border-color: rgb(27 57 106) !important;
+    background-color: rgb(27 57 106) !important;
+    color: white !important;
+}
+
+.card {
+    background-color: #f7f7f7;
+}

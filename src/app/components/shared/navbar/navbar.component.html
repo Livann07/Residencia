@@ -38,10 +38,10 @@
                     <a class="nav-link" routerLink="perfil">{{this.ses.getNombreSesion() | uppercase}}</a>
                 </li>
                 <li *ngIf='!this.ses.verificarSesion()' class='nav-item' routerLinkActive="active">
-                    <a class="nav-link" routerLink="login">Iniciar Sesion</a>
+                    <a class="nav-link" routerLink="login">Iniciar Sesi&oacute;n</a>
                 </li>
                 <li *ngIf='!this.ses.verificarSesion()' class='nav-item' routerLinkActive="active">
-                    <a class="nav-link" routerLink="register">Registrarse</a>
+                    <a class="nav-link" routerLink="register">Registrate</a>
                 </li>
 
                 <li class="nav-item" routerLinkActive="active">
@@ -61,7 +61,7 @@
 
         <div class="form-inline my-2 my-lg-0 ml-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar participantes" aria-label="Search" (keyup.enter)="buscarPonente(buscarTexto.value)" #buscarTexto>
-            <button (click)="buscarPonente(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar
+            <button (click)="buscarPonente(buscarTexto.value)" class="btn btn-outline-busqueda my-2 my-sm-0" type="button">Buscar
             </button> &nbsp;&nbsp;&nbsp;
         </div>
 
