@@ -3,7 +3,9 @@
     <div class="container animated fadeIn fast" *ngSwitchCase='true'>
         <div class="jumbotron">
             <h1 class="display-4" style="color:rgb(27 57 106)">Ya estas registrado para el congreso</h1>
-            <p class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para no perderte ninguna actividad</p>
+            <p class="lead" style="color:rgb(27 57 106)">Consulta los links de cada conferencia en el programa</p>
+            <a target="_blank" href="https://www.mochis.tecnm.mx/wp-content/uploads/2020/06/cicti2020_programa-def.pdf">Programa</a>
+
         </div>
     </div>
     <div class="container animated fadeIn fast" *ngSwitchCase='false'>
@@ -78,7 +80,7 @@
                     <!--<label id="example-radio-group-label">Selecciona los talleres a los que te gustaria asistir</label>-->
                     <h4 class="animated fadeIn">Talleres <small>Selecciona tus talleres a asistir</small></h4>
 
-                    <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
+                    <!--<section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
                         <mat-checkbox [checked]=item.completed [formControlName]="i">
                             <h5>{{talleres[i].name}}:<br>
                                 <small>
@@ -88,13 +90,32 @@
                                 </small>
                             </h5>
                         </mat-checkbox>
-                    </section>
+                    </section>-->
+
+                    <div class="card-columns animated fadeIn fast">
+                        <div class="card animated fadeIn fast" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
+                            <img [src]="talleres[i].imagen" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{talleres[i].name}}</h5>
+                                <p class="card-text">
+                                    <small>
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios1}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios2}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios3}} 
+                                    </small>
+                                </p>
+                                <p class="card-text"><small class="text-muted"> Link </small></p>
+
+                                <mat-checkbox [checked]=item.completed [formControlName]="i">Asistir</mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
 
                     <hr>
 
                     <h4 class="animated fadeIn">Ponentes <small>Selecciona tus ponentes favoritos</small></h4>
 
-                    <section class="ponentes" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
+                    <!--<section class="ponentes" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
                         <mat-checkbox [checked]=item.completed [formControlName]="i">
                             <h5>{{ponentesSC[i].descripcion}} <br>
 
@@ -108,7 +129,53 @@
 
                             </h5>
                         </mat-checkbox>
-                    </section>
+                    </section>-->
+
+                    <div class="card-columns animated fadeIn fast">
+                        <div class="card animated fadeIn fast" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
+                            <img [src]="ponentesSC[i].imagen" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ponentesSC[i].descripcion}}</h5>
+                                <p class="card-text">
+                                    <small>
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
+                                    </small>
+                                    <small *ngIf="ponentesSC[i].horarios2"><br>
+                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
+                                    </small>
+                                </p>
+                                <p class="card-text"><small class="text-muted"> Link </small></p>
+
+                                <mat-checkbox [checked]="item.completed" [formControlName]="i">Asistir</mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="card-columns">
+                        <div class="card mb-3" style="max-width: 540px;" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img [src]="ponentesSC[i].imagen" class="card-img-top" alt="..." height="200">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ponentesSC[i].descripcion}}</h5>
+                                        <p class="card-text">
+                                            <small>
+                                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
+                                            </small>
+                                            <small *ngIf="ponentesSC[i].horarios2"><br>
+                                            <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
+                                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
+                                            </small>
+                                        </p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
 
                     <br><br><br>
                     <button mat-raised-button color="primary" type="submit" [disabled]='congresoAlumnoForm.invalid'>Registrarse</button>
@@ -161,35 +228,93 @@
 
                     <h4 class="animated fadeIn">Talleres <small>Selecciona tus talleres a asistir</small></h4>
 
-                    <section class="talleres" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
-                        <mat-checkbox [checked]=item.completed [formControlName]="i">
-                            <h5>{{talleres[i].name}}:<br>
-                                <small>
-                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios1}}<br> 
-                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios2}}<br> 
-                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios3}} 
-                                </small>
-                            </h5>
-                        </mat-checkbox>
-                    </section>
+                    <div class="card-columns animated fadeIn fast">
+                        <div class="card animated fadeIn fast" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
+                            <img [src]="talleres[i].imagen" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{talleres[i].name}}</h5>
+                                <p class="card-text">
+                                    <small>
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios1}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios2}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios3}} 
+                                    </small>
+                                </p>
+                                <p class="card-text"><small class="text-muted"> Link </small></p>
+
+                                <mat-checkbox [checked]=item.completed [formControlName]="i">Asistir</mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <hr>
 
+
                     <h4 class="animated fadeIn">Ponentes <small>Selecciona tus ponentes favoritos</small></h4>
 
-                    <section class="ponentes" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
+                    <!--<section class="ponentes" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
                         <mat-checkbox [checked]=item.completed [formControlName]="i">
                             <h5>{{ponentesSC[i].descripcion}} <br>
+
                                 <small>
-                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}}
+                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
                                 </small>
                                 <small *ngIf="ponentesSC[i].horarios2"><br>
                                     <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
-                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}}
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
                                 </small>
+
                             </h5>
                         </mat-checkbox>
-                    </section>
+                    </section>-->
+
+                    <div class="card-columns animated fadeIn fast">
+                        <div class="card animated fadeIn fast" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
+                            <img [src]="ponentesSC[i].imagen" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ponentesSC[i].descripcion}}</h5>
+                                <p class="card-text">
+                                    <small>
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
+                                    </small>
+                                    <small *ngIf="ponentesSC[i].horarios2"><br>
+                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
+                                    </small>
+                                </p>
+                                <p class="card-text"><small class="text-muted"> Link </small></p>
+
+                                <mat-checkbox [checked]="item.completed" [formControlName]="i">Asistir</mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="card-columns">
+                        <div class="card mb-3" style="max-width: 540px;" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img [src]="ponentesSC[i].imagen" class="card-img-top" alt="..." height="200">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ponentesSC[i].descripcion}}</h5>
+                                        <p class="card-text">
+                                            <small>
+                                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
+                                            </small>
+                                            <small *ngIf="ponentesSC[i].horarios2"><br>
+                                            <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
+                                                <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
+                                            </small>
+                                        </p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
 
 
                     <br><br><br>

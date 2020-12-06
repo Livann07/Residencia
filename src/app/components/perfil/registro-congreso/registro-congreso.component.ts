@@ -243,6 +243,7 @@ export class RegistroCongresoComponent implements OnInit {
       horarios1: 'Martes 17 de noviembre de 9:00 - 14:00',
       horarios2: 'Miercoles 18 de noviembre de 10:00 - 14:00',
       horarios3: 'Viernes 20 de noviembre de 9:00 - 14:00',
+      imagen: 'assets/img/pymes.png',
       completed: false,
     },
   ];
@@ -251,10 +252,11 @@ export class RegistroCongresoComponent implements OnInit {
     {
       name: 'Mesas de Trabajo',
       tipo: 'Ponencias',
-      descripcion: 'Ingeniería Ambiental y Energías Renovables / Ingeniería en Sistemas de Proceso',
+      descripcion: 'Ing. Ambiental y Energías Renovables / Ingeniería en Sistemas de Proceso',
       horarios1: 'Martes 17 de noviembre de 21:00 - 22:00',
       horarios2: 'Jueves 19 de noviembre de 21:00 - 22:00',
       horarios3: 'Viernes 20 de noviembre de 21:00 - 22:00',
+      imagen: 'assets/img/inga.jpg',
       completed: false,
     },
     {
@@ -264,6 +266,7 @@ export class RegistroCongresoComponent implements OnInit {
       horarios1: 'Viernes 20 de noviembre de 20:00 - 22:00',
       horarios2: '',
       horarios3: '',
+      imagen: 'assets/img/planif.jpg',
       completed: false,
     },
   ];
