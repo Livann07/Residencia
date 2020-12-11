@@ -41,6 +41,8 @@ import { DataDbService } from './services/data-db.service';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
 import { PonenteSeleccionComponent } from './components/ponentes/ponente-seleccion/ponente-seleccion.component';
 import { ProgramaComponent } from './components/perfil/programa/programa.component';
+import { PerfilAdminComponent } from './components/perfil-admin/perfil-admin.component';
+import { AsistentesComponent } from './components/asistentes/asistentes.component';
 
 
 @NgModule({
@@ -61,6 +63,8 @@ import { ProgramaComponent } from './components/perfil/programa/programa.compone
     PonenteSeleccionComponent,
     ConstanciaComponent,
     ProgramaComponent,
+    PerfilAdminComponent,
+    AsistentesComponent,
   ],
   imports: [
     BrowserModule,

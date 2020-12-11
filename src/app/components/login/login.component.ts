@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           correo: e.payload.doc.data()['correo'],
           pass: e.payload.doc.data()['pass'],
         };
-      })
+      });
       this.mostrar(values);
       this.clienteSubscription.unsubscribe();
     });

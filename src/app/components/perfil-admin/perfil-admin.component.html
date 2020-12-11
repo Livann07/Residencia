@@ -1,0 +1,48 @@
+<div class="container">
+    <br><br>
+    <form [formGroup]="editForm" style="text-align: center;">
+
+
+
+        <h1 class="animated fadeIn fast"> Editar contrase&ntilde;a </h1>
+        <hr><br>
+        <div class="divi">
+            <label class="texto">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>ADMIN</mat-label>
+            <input matInput disabled>
+        </mat-form-field>
+        <br>
+
+        <div class="divi">
+            <label class="texto">Nueva Contrase&ntilde;a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Ingresa una nueva contrase&ntilde;a</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass' autocomplete="on">
+            <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+        <br>
+        <div class="divi">
+            <label class="texto">Confirmar contrase&ntilde;a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <mat-form-field appearance="outline" class="margen" [style.width.%]=50 [style.min-width.px]=250>
+            <mat-label>Confirma la contrase&ntilde;a</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher" autocomplete="on">
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
+        <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+            <mat-error *ngIf="editForm.hasError('notSame')"> Las contrase&ntilde;as no coinciden </mat-error>
+        </mat-form-field>
+
+
+        <br> <br>
+        <button mat-raised-button color="primary" type="button" [disabled]='editForm.invalid' (click)='enviar(editForm.value)' [style.width.px]=200>Enviar</button>
+        <p></p>
+    </form>
+    <br><br><br>
+</div>

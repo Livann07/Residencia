@@ -451,19 +451,24 @@ export class RegistroCongresoComponent implements OnInit {
   recibirDatos()
   {
     var datos: any;
-
+    
     this.clienteSubscription = this.dbData.getparticipantes().subscribe(resp =>{
+      
       datos = resp.map((e: any) => {
         return {
           correo: e.payload.doc.data()['correo'],
         };
       });
+
+      /*datos = resp.map(e => e.payload.doc.data());
+      console.log(datos);*/
+      
       this.clienteSubscription.unsubscribe();
       this.compararDatos(datos);
     });
   }
-  compararDatos(values: any)
-  { var encontro = false;
+  compararDatos(values: any){ 
+    var encontro = false;
     values.forEach(element => {
       if(element.correo == this.sesi.getCorreoSesion())
       {

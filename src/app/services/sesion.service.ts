@@ -42,11 +42,21 @@ export class SesionService {
     }
   }
 
+  verificarAdmin(){
+    if(sessionStorage.getItem('correo') === 'admin@admin.com'){
+      return true;
+    }
+    return false;
+  }
+
   logOut()
   {
     sessionStorage.removeItem('correo');
     sessionStorage.removeItem('nombre');
     sessionStorage.removeItem('apellidos');
+    try{
+      localStorage.removeItem('datos');
+    }catch{}
     sessionStorage.clear();
 
   }

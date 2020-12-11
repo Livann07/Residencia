@@ -20,4 +20,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/search', termino]);
   }
 
+
+  cerrarSesion()
+  {
+    this.ses.logOut();
+    this.router.navigate(['home']);
+  }
 }

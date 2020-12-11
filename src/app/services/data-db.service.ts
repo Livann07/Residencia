@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { alumExternos } from '../models/alumExternos.interface';
 import { alumnos } from '../models/alumnos.interface';
 import { participantes } from '../models/participantesCongreso';
 import { usersU } from '../models/users.interface';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +16,22 @@ export class DataDbService {
   private alumnosCollection: AngularFirestoreCollection <alumnos>;
   private alumExternosCollection: AngularFirestoreCollection <alumExternos>;
   private participanteCongreso: AngularFirestoreCollection <participantes>;
+  //private usersCollec: AngularFirestoreCollection<usersU>;
+  private usersCollec: Observable<usersU[]>;
+  private itemDoc:AngularFirestoreDocument<usersU>;
 
   constructor(private afs: AngularFirestore, private afAlumnos: AngularFirestore, private afalumExternos: AngularFirestore, private partCongre: AngularFirestore) { 
     this.userCollection = afs.collection<usersU> ('usuarios');
     this.alumnosCollection = afAlumnos.collection<alumnos> ('alumnos');
     this.alumExternosCollection = afalumExternos.collection<alumExternos> ('alumnosExternos');
     this.participanteCongreso = partCongre.collection<participantes> ('participantes');
+    this.usersCollec = this.userCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as usersU;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   saveUsers(newUser: usersU): void{
@@ -33,6 +45,11 @@ export class DataDbService {
   }
   saveParticipante(newParticipante: participantes): void{
     this.participanteCongreso.add(newParticipante);
+  }
+
+  updateUserAdmin(editUser: usersU, id):void{
+    this.itemDoc=this.afs.doc<usersU>("usuarios/"+id);
+    this.itemDoc.update(editUser);
   }
 
   getUser()
@@ -51,4 +68,6 @@ export class DataDbService {
   {
     return this.participanteCongreso.snapshotChanges();
   }
+
+ 
 }
