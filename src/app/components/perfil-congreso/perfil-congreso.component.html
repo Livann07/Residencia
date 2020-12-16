@@ -1,0 +1,24 @@
+<div class="container animated fadeIn fast" style="text-align: center;" id="contenedor">
+    <h1>Registrar asistencia</h1>
+    <br>
+    <button type="button" class="btn btn-outline-info" (click)="iniciar()">Iniciar escaneo</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-outline-info" (click)="detener()">Detener escaneo</button>
+    <br><br>
+    <div>
+       <h3>{{mensaje}}</h3>
+    </div>
+    <div [hidden]='this.hid'>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status" [hidden]="load">
+              
+            </div>
+        </div>
+        <qr-scanner
+            [debug]="false"
+            [canvasWidth]="1080" 
+            [canvasHeight]="720"
+            [stopAfterScan]="false" 
+            [updateTime]="3000">
+        </qr-scanner>
+    </div>
+</div>

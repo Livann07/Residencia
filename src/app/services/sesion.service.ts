@@ -49,6 +49,13 @@ export class SesionService {
     return false;
   }
 
+  verificarCongreso(){
+    if(sessionStorage.getItem('correo') === 'congreso@congreso.com'){
+      return true;
+    }
+    return false;
+  }
+
   logOut()
   {
     sessionStorage.removeItem('correo');

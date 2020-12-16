@@ -32,7 +32,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion/autorizar.service';
 import { ConstanciaComponent } from './components/perfil/constancia/constancia.component';
-
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgQrScannerModule } from 'angular2-qrscanner';
 // firebase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
@@ -43,6 +44,7 @@ import { PonenteSeleccionComponent } from './components/ponentes/ponente-selecci
 import { ProgramaComponent } from './components/perfil/programa/programa.component';
 import { PerfilAdminComponent } from './components/perfil-admin/perfil-admin.component';
 import { AsistentesComponent } from './components/asistentes/asistentes.component';
+import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-congreso.component';
 
 
 @NgModule({
@@ -65,6 +67,7 @@ import { AsistentesComponent } from './components/asistentes/asistentes.componen
     ProgramaComponent,
     PerfilAdminComponent,
     AsistentesComponent,
+    PerfilCongresoComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,9 @@ import { AsistentesComponent } from './components/asistentes/asistentes.componen
     MatSnackBarModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    QRCodeModule,
+    NgQrScannerModule
   ],
   providers: [
     DataDbService,

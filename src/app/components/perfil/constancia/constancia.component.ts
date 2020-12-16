@@ -12,7 +12,6 @@ pdfMake.fonts = {
   },
 }
 
-
 @Component({
   selector: 'app-constancia',
   templateUrl: './constancia.component.html',
@@ -41,6 +40,7 @@ export class ConstanciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+        
   }
 
   obtenerConstancias(): any{
