@@ -5,6 +5,7 @@ import { DataDbService } from '../../../services/data-db.service';
 import { DataPonentesService, Ponentes } from '../../../services/ponentes/data-ponentes.service';
 import { Subscription } from 'rxjs';
 import { Router} from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'registro-congreso',
@@ -24,6 +25,8 @@ export class RegistroCongresoComponent implements OnInit {
   clienteSubscription: Subscription;
   isParticipante: boolean;
 
+  public myAngularxQrCode: string = null;
+  public hid: boolean;
   ponentess: any[] = [
     {
       name: 'Dr. Diego Alfredo Tlapa Mendoza',
@@ -300,6 +303,9 @@ export class RegistroCongresoComponent implements OnInit {
     this.addCheckboxesOfPonentesMarcadasAlumno();
 
     this.comprobarRegistro();
+
+    this.myAngularxQrCode = this.generarCorreoEnCodigo();
+    this.hid = true;
   }
 
   ngOnInit(): void {
@@ -418,6 +424,7 @@ export class RegistroCongresoComponent implements OnInit {
     const partExt = {
       correo: this.sesi.getCorreoSesion(),
       participante: 'alumExterno',
+      asistio: 'no',
     };
     this.dbData.saveParticipante(partExt);
     window.location.reload();
@@ -440,6 +447,7 @@ export class RegistroCongresoComponent implements OnInit {
     const partInt = {
       correo: this.sesi.getCorreoSesion(),
       participante: 'alumInterno',
+      asistio: "no",
     };
     this.dbData.saveParticipante(partInt);
     window.location.reload();
@@ -481,5 +489,14 @@ export class RegistroCongresoComponent implements OnInit {
     {
       this.isParticipante = false;
     }
+  }
+
+  mostrarCodigo() {
+    this.hid = !this.hid;
+  }
+
+  generarCorreoEnCodigo() {
+    let l = CryptoJS.AES.encrypt(this.sesi.getCorreoSesion(), '9876543210').toString();
+    return l;
   }
 }

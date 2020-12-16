@@ -16,11 +16,13 @@ export class DataDbService {
   private alumnosCollection: AngularFirestoreCollection <alumnos>;
   private alumExternosCollection: AngularFirestoreCollection <alumExternos>;
   private participanteCongreso: AngularFirestoreCollection <participantes>;
+  private participanteUnico: AngularFirestoreCollection <participantes>;
   //private usersCollec: AngularFirestoreCollection<usersU>;
   private usersCollec: Observable<usersU[]>;
   private itemDoc:AngularFirestoreDocument<usersU>;
+  private itemParti:AngularFirestoreDocument<participantes>;
 
-  constructor(private afs: AngularFirestore, private afAlumnos: AngularFirestore, private afalumExternos: AngularFirestore, private partCongre: AngularFirestore) { 
+  constructor(private afs: AngularFirestore, private afAlumnos: AngularFirestore, private afalumExternos: AngularFirestore, private partiUnico: AngularFirestore,  private partCongre: AngularFirestore) { 
     this.userCollection = afs.collection<usersU> ('usuarios');
     this.alumnosCollection = afAlumnos.collection<alumnos> ('alumnos');
     this.alumExternosCollection = afalumExternos.collection<alumExternos> ('alumnosExternos');
@@ -32,6 +34,7 @@ export class DataDbService {
         return { id, ...data };
       }))
     );
+
   }
 
   saveUsers(newUser: usersU): void{
@@ -51,7 +54,15 @@ export class DataDbService {
     this.itemDoc=this.afs.doc<usersU>("usuarios/"+id);
     this.itemDoc.update(editUser);
   }
+  updateParticipante(id: string):void{
+    this.itemParti =this.partCongre.doc<participantes>("participantes/"+id);
+    this.itemParti.update({asistio: "si"});
+  }
 
+  getIdDocumentCorreo(correo: string) {
+    this.participanteUnico = this.partiUnico.collection<participantes>('participantes', ref => ref.where('correo', '==', correo));
+    return this.participanteUnico.snapshotChanges();
+  }
   getUser()
   {
     return this.userCollection.snapshotChanges();

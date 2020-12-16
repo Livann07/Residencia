@@ -34,11 +34,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
-                <li *ngIf='this.ses.verificarSesion() && !this.ses.verificarAdmin()' class='nav-item' routerLinkActive="active">
+                <li *ngIf='this.ses.verificarSesion() && !this.ses.verificarAdmin() && !this.ses.verificarCongreso()' class='nav-item' routerLinkActive="active">
                     <a class="nav-link" routerLink="perfil">Perfil</a>
                 </li>
 
-                <li *ngIf='this.ses.verificarSesion() && this.ses.verificarAdmin()' class='nav-item' routerLinkActive="active">
+                <li *ngIf='this.ses.verificarSesion() && this.ses.verificarAdmin()  && !this.ses.verificarCongreso()' class='nav-item' routerLinkActive="active">
                     <a class="nav-link" routerLink="perfil-admin">PerfilAdmin</a>
                 </li>
 
@@ -46,6 +46,9 @@
                     <a class="nav-link" routerLink="asistentes">Asistentes</a>
                 </li>
 
+                <li *ngIf='this.ses.verificarSesion() && this.ses.verificarCongreso()' class='nav-item' routerLinkActive="active">
+                    <a class="nav-link" routerLink="asistencia">Registrar Asistencia</a>
+                </li>
 
                 <li *ngIf='!this.ses.verificarSesion()' class='nav-item' routerLinkActive="active">
                     <a class="nav-link" routerLink="login">Iniciar Sesi&oacute;n</a>
@@ -54,13 +57,13 @@
                     <a class="nav-link" routerLink="register">Registrate</a>
                 </li>
 
-                <li *ngIf='!this.ses.verificarAdmin()' class="nav-item" routerLinkActive="active">
+                <li *ngIf='!this.ses.verificarAdmin() && !this.ses.verificarCongreso()' class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="home">Home </a>
                 </li>
-                <li *ngIf='!this.ses.verificarAdmin()' class="nav-item" routerLinkActive="active">
+                <li *ngIf='!this.ses.verificarAdmin()  && !this.ses.verificarCongreso()' class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="about">Acerca de</a>
                 </li>
-                <li *ngIf='!this.ses.verificarAdmin()' class="nav-item" routerLinkActive="active">
+                <li *ngIf='!this.ses.verificarAdmin()  && !this.ses.verificarCongreso()' class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['ponentes']">Personalidades</a>
                 </li>
 
@@ -69,7 +72,7 @@
         </form>
 
 
-        <div *ngIf='!this.ses.verificarAdmin()' class="form-inline my-2 my-lg-0 ml-auto">
+        <div *ngIf='!this.ses.verificarAdmin()  && !this.ses.verificarCongreso() ' class="form-inline my-2 my-lg-0 ml-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar participantes" aria-label="Search" (keyup.enter)="buscarPonente(buscarTexto.value)" #buscarTexto>
             <button (click)="buscarPonente(buscarTexto.value)" class="btn btn-outline-busqueda my-2 my-sm-0" type="button">Buscar
             </button> &nbsp;&nbsp;&nbsp;
@@ -79,7 +82,11 @@
             <button (click)="cerrarSesion()" class="btn btn-outline-busqueda my-2 my-sm-0" type="button">Cerrar Sesión
             </button> &nbsp;&nbsp;&nbsp;
         </div>
-
+        
+        <div *ngIf='this.ses.verificarSesion() && this.ses.verificarCongreso()' class="form-inline my-2 my-lg-0 ml-auto">
+            <button (click)="cerrarSesion()" class="btn btn-outline-busqueda my-2 my-sm-0" type="button">Cerrar Sesión
+            </button> &nbsp;&nbsp;&nbsp;
+        </div>
 
 
     </div>

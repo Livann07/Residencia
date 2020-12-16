@@ -24,6 +24,8 @@
     "@angular/router": "~10.1.6",
     "@rxweb/reactive-form-validators": "^2.1.2",
     "@types/crypto-js": "^4.0.1",
+    "angular2-qrscanner": "^1.0.7",
+    "angularx-qrcode": "^10.0.11",
     "crypto-js": "^4.0.0",
     "firebase": "^7.24.0",
     "pdfmake": "^0.1.68",

@@ -69,3 +69,38 @@ export class AuthGuardServiceFalse2 implements CanActivate {
   }
 
 }
+
+///////////////
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuardServiceCongreso implements CanActivate {
+  constructor(private sesion: SesionService){
+
+  }
+
+  canActivate(){
+    if (this.sesion.verificarCongreso()){
+      return true;
+    }else {
+      return false;
+    }
+  }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuardServiceCongresoFalse implements CanActivate {
+  constructor(private sesion: SesionService){
+
+  }
+
+  canActivate(){
+    if (!this.sesion.verificarCongreso()){
+      return true;
+    }else {
+      return false;
+    }
+  }
+}
