@@ -16,14 +16,16 @@ export class DataDbService {
   private alumnosCollection: AngularFirestoreCollection <alumnos>;
   private alumExternosCollection: AngularFirestoreCollection <alumExternos>;
   private participanteCongreso: AngularFirestoreCollection <participantes>;
-  //private usersCollec: AngularFirestoreCollection<usersU>;
+  private habilitar: AngularFirestoreCollection ;
   private usersCollec: Observable<usersU[]>;
   private itemDoc:AngularFirestoreDocument<usersU>;
+  private constanciasDoc: AngularFirestoreDocument<any>;
 
-  constructor(private afs: AngularFirestore, private afAlumnos: AngularFirestore, private afalumExternos: AngularFirestore, private partCongre: AngularFirestore) { 
+  constructor(private afs: AngularFirestore, private afAlumnos: AngularFirestore, private afalumExternos: AngularFirestore, private partCongre: AngularFirestore, private hab: AngularFirestore) { 
     this.userCollection = afs.collection<usersU> ('usuarios');
     this.alumnosCollection = afAlumnos.collection<alumnos> ('alumnos');
     this.alumExternosCollection = afalumExternos.collection<alumExternos> ('alumnosExternos');
+    this.habilitar = hab.collection ('constancias');
     this.participanteCongreso = partCongre.collection<participantes> ('participantes');
     this.usersCollec = this.userCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -32,6 +34,7 @@ export class DataDbService {
         return { id, ...data };
       }))
     );
+   
   }
 
   saveUsers(newUser: usersU): void{
@@ -52,6 +55,11 @@ export class DataDbService {
     this.itemDoc.update(editUser);
   }
 
+  updateHabilitarConstancias(editConstancias : any): void{
+    this.constanciasDoc = this.hab.doc("constancias/cons");
+    this.constanciasDoc.update(editConstancias);
+  }
+
   getUser()
   {
     return this.userCollection.snapshotChanges();
@@ -67,6 +75,10 @@ export class DataDbService {
   getparticipantes()
   {
     return this.participanteCongreso.snapshotChanges();
+  }
+  
+  getValorConstancia(){
+    return this.habilitar.snapshotChanges();
   }
 
  

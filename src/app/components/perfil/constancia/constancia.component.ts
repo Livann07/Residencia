@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SesionService } from 'src/app/services/sesion.service';
 import pdfMake from "pdfmake/build/pdfmake";  
 import pdfFonts from "src/assets/custom-fonts.js";  
+import { DataDbService } from '../../../services/data-db.service';
+import { Subscription } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;  
 pdfMake.fonts = {
   courier: {
@@ -23,17 +25,36 @@ export class ConstanciaComponent implements OnInit {
   dia: any;
   mes: any;
   year: any;
+  datosConstancias: any;
+  constanciasValidas: boolean;
+  suscripcionD : Subscription;
+  x: any;
 
-  constructor(private sesi: SesionService) { 
+  constructor(private sesi: SesionService, private dbData: DataDbService) { 
     this.nombre = sesi.getNombreSesion() + ' ' + sesi.getApellidosSesion();
     this.num_control = '16440516'
     this.carrera = 'Ingenieria Informatica'
     this.dia= this.obtenerDiaLetras(new Date().getDate());
     this.mes= this.obtenerMesLetras(new Date().getMonth());
     this.year= new Date().getFullYear();
+    this.obtenerConstancias();    
   }
 
   ngOnInit(): void {
+  }
+
+  obtenerConstancias(): any{
+    // * Tomar valor de firebase
+    this.suscripcionD = this.dbData.getValorConstancia().subscribe(resp =>{
+      this.datosConstancias = resp.map(e => e.payload.doc.data());
+      this.suscripcionD.unsubscribe();
+      this.datosConstancias.forEach(element => {
+         this.x = element['constancias'];
+      });
+
+      this.constanciasValidas = this.x;
+    });
+    console.log('aaa');
   }
 
   pdf() {

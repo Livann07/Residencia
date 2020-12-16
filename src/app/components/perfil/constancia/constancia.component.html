@@ -1,8 +1,11 @@
 <br><br>
-<div class="container animated fadeIn fast">
-    <div class="jumbotron">
-        <h1 class="display-4" style="color:rgb(27 57 106)">Proximamente</h1>
-        <p class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para generar tu constancia</p>
-        <button type="button" class="btn btn-outline-info" (click)="pdf()">Descargar constancia de asistencia</button>
+<div class="container animated fadeIn slow">
+    <div [ngSwitch]='constanciasValidas' class="jumbotron">
+        <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Proximamente</h1>
+        <p *ngSwitchCase="false" class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para generar tu constancia</p>
+        <h1 *ngSwitchCase="true" class="display-4" style="color:rgb(27 57 106)">Congreso Internacional</h1>
+        <p *ngSwitchCase="true" class="lead" style="color:rgb(27 57 106)">Genera tu constancia aqu&iacute;</p>
+        <button *ngSwitchCase="true" type="button" class="btn btn-outline-info" (click)="pdf()">Descargar constancia de asistencia</button>
+
     </div>
 </div>

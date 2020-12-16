@@ -6,6 +6,7 @@ import { usersU } from '../../models/users.interface';
 import { Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 // ? *********************************
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -40,6 +41,9 @@ export class PerfilAdminComponent implements OnInit {
   editForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   mat2 = new MyErrorStateMatcher2();
+  suscripcionD : Subscription;
+  datos: any;
+  datosHabConst: any;
   
   constructor(private _builder: FormBuilder, private dbData: DataDbService, private route: Router) {
     this.editForm = this._builder.group({
@@ -79,6 +83,24 @@ export class PerfilAdminComponent implements OnInit {
       timer: 3000
     });
     //console.log(this.dbData.getTodo());
+  }
+
+  cambiarConstancias(){
+    var ls;
+    this.suscripcionD = this.dbData.getValorConstancia().subscribe(resp =>{
+      this.datosHabConst = resp.map(e => e.payload.doc.data());
+      localStorage.setItem('valido', JSON.stringify(this.datosHabConst));
+      this.suscripcionD.unsubscribe();
+      this.datosHabConst.forEach(element => {
+         ls = element['constancias'];
+      });
+
+      const editado ={
+        constancias: !ls
+      }
+      this.dbData.updateHabilitarConstancias(editado);
+    });
+    
   }
 
   pass1 = new FormControl('', [Validators.required, Validators.minLength(6)]);
