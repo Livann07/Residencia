@@ -89,7 +89,7 @@ import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-con
     MatCheckboxModule,
     MatSlideToggleModule,
     QRCodeModule,
-    NgQrScannerModule
+    NgQrScannerModule,
   ],
   providers: [
     DataDbService,

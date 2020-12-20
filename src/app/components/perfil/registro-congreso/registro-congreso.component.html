@@ -39,7 +39,12 @@
                     &nbsp;
                     <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
                         <mat-label>Carrera</mat-label>
-                        <input matInput placeholder="Carrera" formControlName="carrera">
+                        <mat-select formControlName="carrera">
+                            <mat-option *ngFor="let c of carreras" [value]="c.valor">
+                              {{c.vista}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Por favor selecciona tu carrera</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field appearance="outline" [style.width.px]=260 class="campo">
