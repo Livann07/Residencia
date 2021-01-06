@@ -1,5 +1,5 @@
 <div class="card animated fadeIn fast">
-    <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
+    <img [src]="ponente.img |noimage" class="card-img-top" [alt]="ponente.nombre">
     <div class="card-body">
         <h5 class="card-title">{{ ponente.nombre }}</h5>
         <p class="card-text">{{ ponente.desConferencia }}</p>

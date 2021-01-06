@@ -47,9 +47,10 @@
     <br><br>
     <hr>
     <div class="text-center">
-        <h1 class="animated fadeIn fast text-center"> Habilitar constancias</h1>
+        <h1 class="text-center" *ngIf="this.cambio"> Deshabilitar constancias</h1>
+        <h1 class="text-center" *ngIf="!this.cambio"> Habilitar constancias</h1>
         <br>
-        <button (click)="cambiarConstancias()" class="btn btn-outline-busqueda text-center" type="button" [style.width.px]=200> Habilitar / Deshabilitar
+        <button (click)="cambiarConstancias()" class="btn btn-outline-busqueda text-center" type="button" [style.width.px]=200> Cambiar
         </button>
     </div>
     <br><br><br>

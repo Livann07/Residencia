@@ -5,9 +5,16 @@
 
     <hr>
 
-    <div class="card-columns animated fadeIn fast">
-        <!--  *ngFor="let heroe of heroes; let i=index" -->
-        <app-ponente-tarjeta (ponenteSeleccionado)="verPonente($event)" [ponente]="ponente" [index]="i" *ngFor="let ponente of ponentes; let i=index"> </app-ponente-tarjeta>
-
+    <div [ngSwitch]='oo'>
+        <div class="card-columns animated fadeIn fast" *ngSwitchCase='true'>
+            <!--  *ngFor="let heroe of heroes; let i=index" -->
+            <app-ponente-tarjeta (ponenteSeleccionado)="verPonente($event)" [ponente]="ponente" [index]="i" *ngFor="let ponente of ponentes; let i=index"> </app-ponente-tarjeta>
+        </div>
+        <div *ngSwitchCase='false'>
+        </div>
     </div>
+
+
+
+
 </div>

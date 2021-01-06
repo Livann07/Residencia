@@ -5,15 +5,12 @@
             <h1 class="display-4" style="color:rgb(27 57 106)">Ya estas registrado para el congreso</h1>
             <p class="lead" style="color:rgb(27 57 106)">Consulta los links de cada conferencia en el programa</p>
             <a target="_blank" href="https://www.mochis.tecnm.mx/wp-content/uploads/2020/06/cicti2020_programa-def.pdf">Programa</a>
-        <br><br><br>
-        <button type="button" class="btn btn-outline-info" (click)="mostrarCodigo()" style="text-align: center;">Mostrar codigo para asistencia al evento</button>
-        <br><br>
+            <br><br><br>
+            <button type="button" class="btn btn-outline-info" (click)="mostrarCodigo()" style="text-align: center;">Mostrar codigo para asistencia al evento</button>
+            <br><br>
             <div [hidden]='this.hid' style="text-align: center;">
                 <h4>Guardalo, se te solicitara en la entrada al evento</h4>
-                <qrcode 
-                [qrdata]="myAngularxQrCode" 
-                [width]="256" 
-                [errorCorrectionLevel]="'M'">
+                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'">
                 </qrcode>
             </div>
         </div>
@@ -70,7 +67,7 @@
                         <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
                             <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
                             <div class="card-body">
-                                <h5 class="card-title">{{ ponente.name }}</h5>
+                                <h5 class="card-title">{{ ponente.nombre }}</h5>
                                 <p class="card-text text-justify">{{ ponente.desConferencia }}</p>
                                 <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
                                 <p class="card-text">
@@ -106,12 +103,12 @@
                         <div class="card animated fadeIn fast" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
                             <img [src]="talleres[i].imagen" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">{{talleres[i].name}}</h5>
+                                <h5 class="card-title">{{talleres[i].nombre}}</h5>
                                 <p class="card-text">
                                     <small>
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios1}}<br> 
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios2}}<br> 
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios3}} 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].fecha}}<br> 
+                                        <!--<span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].fecha1}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].fecha2}} -->
                                     </small>
                                 </p>
                                 <p class="card-text"><small class="text-muted"> Link </small></p>
@@ -145,14 +142,14 @@
                         <div class="card animated fadeIn fast" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
                             <img [src]="ponentesSC[i].imagen" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">{{ponentesSC[i].descripcion}}</h5>
+                                <h5 class="card-title">{{ponentesSC[i].nombre}}</h5>
                                 <p class="card-text">
                                     <small>
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].fecha}} 
                                     </small>
                                     <small *ngIf="ponentesSC[i].horarios2"><br>
-                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
+                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].fecha1}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].fecha2}} 
                                     </small>
                                 </p>
                                 <p class="card-text"><small class="text-muted"> Link </small></p>
@@ -220,7 +217,7 @@
                         <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
                             <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
                             <div class="card-body">
-                                <h5 class="card-title text-justify">{{ ponente.name }}</h5>
+                                <h5 class="card-title text-justify">{{ ponente.nombre }}</h5>
                                 <p class="card-text">{{ ponente.desConferencia }}</p>
                                 <p class="card-text"><small class="text-muted">{{ponente.correo}}</small></p>
                                 <p class="card-text">
@@ -242,12 +239,12 @@
                         <div class="card animated fadeIn fast" formArrayName="talleresMarcados" *ngFor="let item of talleresMarcadosCongresoAlumExternoFormArray.controls; let i = index">
                             <img [src]="talleres[i].imagen" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">{{talleres[i].name}}</h5>
+                                <h5 class="card-title">{{talleres[i].nombre}}</h5>
                                 <p class="card-text">
                                     <small>
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios1}}<br> 
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios2}}<br> 
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].horarios3}} 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].fecha}}<br> 
+                                        <!--<span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].fecha1}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{talleres[i].fecha2}} -->
                                     </small>
                                 </p>
                                 <p class="card-text"><small class="text-muted"> Link </small></p>
@@ -283,14 +280,14 @@
                         <div class="card animated fadeIn fast" formArrayName="ponentesMarcados" *ngFor="let item of ponentesMarcadosCongresoAlumosFormArray.controls; let i = index">
                             <img [src]="ponentesSC[i].imagen" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">{{ponentesSC[i].descripcion}}</h5>
+                                <h5 class="card-title">{{ponentesSC[i].nombre}}</h5>
                                 <p class="card-text">
                                     <small>
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios1}} 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].fecha}} 
                                     </small>
                                     <small *ngIf="ponentesSC[i].horarios2"><br>
-                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios2}}<br> 
-                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].horarios3}} 
+                                    <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].fecha1}}<br> 
+                                        <span style="color: rgb(54, 31, 187);"><i class="far fa-circle"></i></span>&nbsp;{{ponentesSC[i].fecha2}} 
                                     </small>
                                 </p>
                                 <p class="card-text"><small class="text-muted"> Link </small></p>

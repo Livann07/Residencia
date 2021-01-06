@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { DataPonentesService, Ponentes } from '../../services/ponentes/data-ponentes.service';
+import { DataPonentesService} from '../../services/ponentes/data-ponentes.service';
 import { Router} from '@angular/router';
+import { conferencistas } from '../../models/conferencistas.interface';
 
 
 @Component({
@@ -11,14 +12,14 @@ import { Router} from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  ponentes: Ponentes[] = [];
+  ponentes: conferencistas[] = [];
   termino: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private _ponenteService: DataPonentesService,
               private router: Router
               ){
-
+                this._ponenteService.getPonentes();
   }
 
   ngOnInit(): void {

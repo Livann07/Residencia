@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -274,5 +274,139 @@ export interface Ponentes{
   link2?: string;
   link3?: string;
   idx?: number;
+}*/
+
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import { Observable, ReplaySubject, Subscription } from 'rxjs';
+import { conferencistas } from '../../models/conferencistas.interface';
+import { map } from 'rxjs/operators';
+import { JsonpClientBackend } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataPonentesService{
+  private conferencistasCollection: AngularFirestoreCollection<conferencistas>;
+  private conferences: Observable<conferencistas[]>;
+  private conferencistasDoc: AngularFirestoreDocument<conferencistas>;
+  private conferecista: Observable<conferencistas>;
+  private ponentes: conferencistas [];
+  suscripcionD : Subscription;
+  datos: any;
+  otro: any;
+
+  public selectConferencista: conferencistas;
+  a =[];
+
+  //observador: Observable;
+  //private itemDoc:AngularFirestoreDocument<usersU>;
+  
+
+  constructor(private afs: AngularFirestore) { 
+    this.conferencistasCollection = afs.collection<conferencistas> ('ponentes');
+    this.conferences = this.conferencistasCollection.valueChanges();
+    this.selectConferencista = {
+      nombre: '',
+      tipo: '',
+      nomConferencia: '',
+      desConferencia: '',
+      datosPonente: '',
+      fecha: '',
+      link: '',
+      img: '',
+      id: null ,
+      completed: false
+    };
+    
+   // this.getPonentes();
+  }
+
+  // * Guardar
+  saveConferencistas(newConferencista: conferencistas): void{
+    this.conferencistasCollection.add(newConferencista);
+  }
+
+  // * Editar
+  editarConferencista(conf: conferencistas){
+    let idConf = conf.id;
+    this.conferencistasDoc = this.afs.doc<conferencistas>(`ponentes/${idConf}`);
+    this.conferencistasDoc.update(conf);
+  }
+  // * Eliminar
+  eliminarConferencistas(idConf: String){
+    this.conferencistasDoc = this.afs.doc<conferencistas>(`ponentes/${idConf}`);
+    this.conferencistasDoc.delete();
+  }
+  //* Obtener
+
+  getConferencistasEdicion(){
+    return this.conferences = this.conferencistasCollection.snapshotChanges()
+      .pipe((map(changes=>{
+        return changes.map(action =>{
+          const data = action.payload.doc.data() as conferencistas;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+      })));
+  }
+
+  getConferencistas(){
+    return this.conferencistasCollection.snapshotChanges();
+  }
+
+
+  // * Almacenar conferencistas en variable local
+  guardarConferencistas(){
+    var ls = JSON.parse(localStorage.getItem('conferencistas'));
+    
+    if(ls == null){
+      this.suscripcionD = this.getConferencistas().subscribe(respuesta =>{
+        this.ponentes = respuesta.map((e: any)=> {
+          return e.payload.doc.data();
+        });
+        localStorage.setItem('conferencistas', JSON.stringify(this.ponentes));
+        this.ponentes = JSON.parse(localStorage.getItem('conferencistas'));
+        this.suscripcionD.unsubscribe();
+      });
+      //console.log('es' + this.ponentes);
+    }else{
+      this.ponentes= ls;
+    }
+    return this.ponentes;
+    
+  }
+
+  getPonentes():any{
+    return this.guardarConferencistas(); 
+  }
+
+  getPonente(idx: string){
+    return this.ponentes[idx];
+  }
+
+
+  buscarPonente(termino: string): conferencistas[] {
+    let ponenteArr: conferencistas[] = [];
+  
+    termino = termino.toLowerCase();
+    for( let i = 0; i <this.ponentes.length; i++){
+    // for(let heroe of this.heores){
+      let ponente = this.ponentes[i];
+      let nombre = ponente.nombre.toLowerCase();
+      if(nombre.indexOf(termino)>=0){
+        ponente.idx = i;
+        ponenteArr.push(ponente);
+      }
+    }
+  
+    return ponenteArr;
+  }
+
+
 }
+
+
+
+
 

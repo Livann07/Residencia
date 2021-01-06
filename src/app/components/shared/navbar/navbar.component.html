@@ -46,6 +46,10 @@
                     <a class="nav-link" routerLink="asistentes">Asistentes</a>
                 </li>
 
+                <li *ngIf='this.ses.verificarSesion() && this.ses.verificarAdmin()' class='nav-item' routerLinkActive="active">
+                    <a class="nav-link" routerLink="agregar-conferencistas">Agregar Conferencistas</a>
+                </li>
+
                 <li *ngIf='this.ses.verificarSesion() && this.ses.verificarCongreso()' class='nav-item' routerLinkActive="active">
                     <a class="nav-link" routerLink="asistencia">Registrar Asistencia</a>
                 </li>
@@ -82,7 +86,7 @@
             <button (click)="cerrarSesion()" class="btn btn-outline-busqueda my-2 my-sm-0" type="button">Cerrar Sesión
             </button> &nbsp;&nbsp;&nbsp;
         </div>
-        
+
         <div *ngIf='this.ses.verificarSesion() && this.ses.verificarCongreso()' class="form-inline my-2 my-lg-0 ml-auto">
             <button (click)="cerrarSesion()" class="btn btn-outline-busqueda my-2 my-sm-0" type="button">Cerrar Sesión
             </button> &nbsp;&nbsp;&nbsp;

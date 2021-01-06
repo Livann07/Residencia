@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { alumExternos } from '../models/alumExternos.interface';
 import { alumnos } from '../models/alumnos.interface';
 import { participantes } from '../models/participantesCongreso';
@@ -22,6 +22,7 @@ export class DataDbService {
   private constanciasDoc: AngularFirestoreDocument<any>;
   private participanteUnico: AngularFirestoreCollection <participantes>;
   private itemParti:AngularFirestoreDocument<participantes>;
+  suscripcionD : Subscription;
 
   constructor(private afs: AngularFirestore, private afAlumnos: AngularFirestore, private afalumExternos: AngularFirestore, private partiUnico: AngularFirestore,  private partCongre: AngularFirestore, private hab: AngularFirestore) { 
     this.userCollection = afs.collection<usersU> ('usuarios');
@@ -91,5 +92,20 @@ export class DataDbService {
     return this.habilitar.snapshotChanges();
   }
 
+  getValorConstanciaDesdeInicio(): any{
+    var ls;
+    this.suscripcionD = this.getValorConstancia().subscribe(resp =>{
+      var datosHabConst = resp.map(e => e.payload.doc.data());
+      localStorage.setItem('valido', JSON.stringify(datosHabConst));
+      this.suscripcionD.unsubscribe();
+      datosHabConst.forEach(element => {
+         ls = element['constancias'];
+      });
+
+      const editado ={
+        constancias: ls
+      }
+    });
+  }
  
 }

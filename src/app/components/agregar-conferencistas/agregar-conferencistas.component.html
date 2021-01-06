@@ -1,0 +1,44 @@
+<br><br><br>
+
+<div class="container text-justify">
+
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <button class="btn btn-outline-busqueda float-right mb-3 animated fadeIn" data-toggle="modal" data-target="#modalConf">Agregar conferencista</button>
+                <table class="table table-hover animated fadeIn">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Nombre Conf</th>
+                            <th scope="col">Descripci&oacute;n</th>
+                            <th scope="col">Datos Ponente</th>
+                            <th scope="col">Acci&oacute;n</th>
+                            <th scope="col"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let conf of conferencistasData; index as i">
+                            <td>{{conf.nombre}}</td>
+                            <td>{{conf.tipo}}</td>
+                            <td>{{conf.nomConferencia}}</td>
+                            <td>{{conf.desConferencia}}</td>
+                            <td>{{conf.datosPonente}}</td>
+                            <td>
+                                <button class="btn btn-outline-busqueda" data-toggle="modal" data-target="#modalConf" (click)="preActualizar(conf)">Actualizar</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="eliminarConferencista(conf.id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-modal></app-modal>

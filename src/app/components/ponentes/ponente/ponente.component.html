@@ -8,7 +8,7 @@
 
         <div class="col-md-4 ">
 
-            <img [src]="ponente.img" class="img-fluid" [alt]="ponente.nombre"><br><br><br>
+            <img [src]="ponente.img |noimage" class="img-fluid" [alt]="ponente.nombre"><br><br><br>
             <img src="assets/img/congreso.jpg" class="img-fluid">
             <br><br>
             <a [routerLink]="['/ponentes']" class="btn btn-outline-danger btn-block">Regresar a Personalidades</a>

@@ -1,0 +1,75 @@
+<div class="modal fade" id="modalConf" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    {{!this.data.selectConferencista.id ? 'Agrega conferencista' : 'Edita conferencista'}}
+                </h5>
+
+            </div>
+            <div class="modal-body">
+                <form #formConf="ngForm" (ngSubmit)="guardarConferencista(formConf)" name="formConf">
+                    <input type="hidden" name="id" [(ngModel)]="this.data.selectConferencista.id">
+                    <div class="form-group">
+                        <label for="nombre" class="col-form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="data.selectConferencista.nombre">
+                    </div>
+
+                    <!--<label for="nombre" class="col-form-label">Imagen subir</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                    <input type="file" accept=".jpg, .png" id="imga" (change)=onUpload($event)>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadPercent |async) + '%'"></div>
+                    </div>-->
+                    <br>
+                    <div class="form-group">
+                        <label for="img" class="col-form-label">Image&nbsp;(url)</label>
+                        <!--<input #img type="text" class="form-control" id="img" [value]="urlImage|async" [(ngModel)]="this.data.selectConferencista.img" name="img">-->
+                        <input #img type="text" class="form-control" id="img" [value]="urlImage|async" [(ngModel)]="data.selectConferencista.img" name="img">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo" class="col-form-label">Tipo:&nbsp;&nbsp;</label>
+                        <select name="tipo" id="tipo" [(ngModel)]="this.data.selectConferencista.tipo" name="tipo">
+                            <option value="Conferencista">Conferencista</option>
+                            <option value="Tallerista">Tallerista</option>
+                            <option value="Ponente">Ponente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomConferencia" class="col-form-label">Nombre Conferencia</label>
+                        <input type="text" class="form-control" id="nomConf" [(ngModel)]="this.data.selectConferencista.nomConferencia" name="nomConferencia">
+                    </div>
+                    <div class="form-group">
+                        <label for="desConferencia" class="col-form-label">Descripción</label>
+                        <input type="text" class="form-control" id="descripcion" [(ngModel)]="this.data.selectConferencista.desConferencia" name="desConferencia">
+                    </div>
+                    <div class="form-group">
+                        <label for="datosPonente" class="col-form-label">Datos Ponente</label>
+                        <input type="text" class="form-control" id="dataPon" [(ngModel)]="this.data.selectConferencista.datosPonente" name="datosPonente">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha" class="col-form-label">Fecha</label>
+                        <input type="text" class="form-control" id="fecha" [(ngModel)]="this.data.selectConferencista.fecha" name="fecha">
+                    </div>
+                    <div class="form-group">
+                        <label for="link" class="col-form-label">Link</label>
+                        <input type="text" class="form-control" id="link" [(ngModel)]="this.data.selectConferencista.link" name="link">
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" #btnClose (click)="limpiar(formConf)" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+                    <input type="hidden" name="completed" value="false" [(ngModel)]="this.data.selectConferencista.completed">
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

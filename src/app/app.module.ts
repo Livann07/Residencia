@@ -37,6 +37,7 @@ import { NgQrScannerModule } from 'angular2-qrscanner';
 // firebase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireStorageModule} from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { DataDbService } from './services/data-db.service';
 import { RegistroCongresoComponent } from './components/perfil/registro-congreso/registro-congreso.component';
@@ -45,6 +46,9 @@ import { ProgramaComponent } from './components/perfil/programa/programa.compone
 import { PerfilAdminComponent } from './components/perfil-admin/perfil-admin.component';
 import { AsistentesComponent } from './components/asistentes/asistentes.component';
 import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-congreso.component';
+import { AgregarConferencistasComponent } from './components/agregar-conferencistas/agregar-conferencistas.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 
 @NgModule({
@@ -68,6 +72,9 @@ import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-con
     PerfilAdminComponent,
     AsistentesComponent,
     PerfilCongresoComponent,
+    AgregarConferencistasComponent,
+    ModalComponent,
+    NoimagePipe,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +90,7 @@ import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-con
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     MatCardModule,
     MatSnackBarModule,
     MatRadioModule,

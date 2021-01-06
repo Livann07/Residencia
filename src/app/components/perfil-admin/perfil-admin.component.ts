@@ -6,7 +6,7 @@ import { usersU } from '../../models/users.interface';
 import { Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 // ? *********************************
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -44,6 +44,7 @@ export class PerfilAdminComponent implements OnInit {
   suscripcionD : Subscription;
   datos: any;
   datosHabConst: any;
+  cambio : Boolean = false;
   
   constructor(private _builder: FormBuilder, private dbData: DataDbService, private route: Router) {
     this.editForm = this._builder.group({
@@ -59,6 +60,13 @@ export class PerfilAdminComponent implements OnInit {
     }, {
       validators: [this.checkPasswords]
     });
+    this.getValorConstanciaDesdeInicio();
+    setTimeout(() => {
+      //this.datosHabConst = localStorage.getItem('valido');
+      console.log('ese' + this.cambio);
+      //this.cambio = this.datosHabConst;
+    }, 1000);
+    
   }
 
   ngOnInit(): void {
@@ -99,7 +107,10 @@ export class PerfilAdminComponent implements OnInit {
         constancias: !ls
       }
       this.dbData.updateHabilitarConstancias(editado);
+      this.datosHabConst= editado;
     });
+
+    this.cambio=!this.cambio;
     
   }
 
@@ -127,6 +138,23 @@ export class PerfilAdminComponent implements OnInit {
   {
     let l = CryptoJS.AES.encrypt(contra, '0123456789').toString();
     return l;
+  }
+
+  getValorConstanciaDesdeInicio(): any{
+    var ls;
+    this.suscripcionD = this.dbData.getValorConstancia().subscribe(resp =>{
+      var datosHabConst = resp.map(e => e.payload.doc.data());
+      localStorage.setItem('valido', JSON.stringify(datosHabConst));
+      this.suscripcionD.unsubscribe();
+      datosHabConst.forEach(element => {
+         ls = element['constancias'];
+      });
+
+      const editado ={
+        constancias: ls
+      }
+      this.cambio = ls;
+    });
   }
 
 }
