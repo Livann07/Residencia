@@ -32,7 +32,67 @@ export class RegistroCongresoComponent implements OnInit {
   public hid: boolean;
   ponentess : any [];
   
-  conferencias: any = [
+  public car: String;
+  carreras: any[] = [
+    {
+      valor: 'Licenciatura en Administración',
+      vista: 'Lic. en Administracion',
+    },
+    {
+      valor: 'Contador Público',
+      vista: 'Contador Público',
+    },
+    {
+      valor: 'Ingeniería Industrial',
+      vista: 'Ing. Industrial',
+    },
+    {
+      valor: 'Ingeniería Informática',
+      vista: 'Ing. Informática',
+    },
+    {
+      valor: 'Licenciatura en Biología',
+      vista: 'Lic. en Biología',
+    },
+    {
+      valor: 'Ingeniería Bioquímica',
+      vista: 'Ing. Bioquímica',
+    },
+    {
+      valor: 'Ingeniería Química',
+      vista: 'Ing. Química',
+    },
+    {
+      valor: 'Ingeniería en Gestión Empresarial',
+      vista: 'Ing. en Gestión Empresarial',
+    },
+    {
+      valor: 'Ingeniería Mecatrónica',
+      vista: 'Ing. Mecatrónica',
+    },
+    {
+      valor: 'Ingeniería Electrónica',
+      vista: 'Ing. Electrónica',
+    },
+    {
+      valor: 'Ingeniería Electromecánica',
+      vista: 'Ing. Electromecánica',
+    },
+    {
+      valor: 'Arquitectura',
+      vista: 'Arquitectura',
+    },
+    {
+      valor: 'Ingeniería en Industrias Alimentarias',
+      vista: 'Ing. en Industrias Alimentarias',
+    },
+    {
+      valor: 'Ingeniería en Innovación Agrícola Sustentable',
+      vista: 'Ing. en Innovación Agrícola Sustentable',
+    },
+  ]
+
+  /*conferencias: any = [
     {
       name: 'Conferencia 1',
       completed: false,
@@ -57,7 +117,7 @@ export class RegistroCongresoComponent implements OnInit {
       name: 'Conferencia 6',
       completed: false,
     },
-  ];
+  ];*/
 
   talleres: any [];
 

@@ -29,14 +29,24 @@ export class ConstanciaComponent implements OnInit {
   suscripcionD : Subscription;
   x: any;
 
+  datosAlumno: any;
+  suscripcionN : Subscription;
+  datos: any;
+
   constructor(private sesi: SesionService, private dbData: DataDbService) { 
     this.nombre = sesi.getNombreSesion() + ' ' + sesi.getApellidosSesion();
-    this.num_control = '16440516'
-    this.carrera = 'Ingenieria Informatica'
     this.dia= this.obtenerDiaLetras(new Date().getDate());
     this.mes= this.obtenerMesLetras(new Date().getMonth());
     this.year= new Date().getFullYear();
-    this.obtenerConstancias();    
+    this.obtenerConstancias();
+    if(localStorage.getItem('carrera') == null) {
+      this.obtenerCarreraYNumCotnrol();
+      console.log('descargue la carrera')
+    }
+    else {
+      this.carrera = localStorage.getItem('carrera');
+      this.num_control = localStorage.getItem('control');
+    }
   }
 
   ngOnInit(): void {
@@ -54,9 +64,26 @@ export class ConstanciaComponent implements OnInit {
 
       this.constanciasValidas = this.x;
     });
-    console.log('aaa');
   }
 
+  obtenerCarreraYNumCotnrol(): any{
+    this.suscripcionN = this.dbData.getAlumnos().subscribe(resp =>{
+      this.datosAlumno = resp.map(e => e.payload.doc.data());
+      this.suscripcionN.unsubscribe();
+      this.datosAlumno.forEach(element => {
+         if(element.correo == this.sesi.getCorreoSesion()){
+           this.datos = {
+              carrera: element.carrera,
+              control: element.numControl,
+           }
+         }
+      });
+      this.carrera = this.datos.carrera;
+      this.num_control = this.datos.control;
+      localStorage.setItem('carrera', this.datos.carrera);
+      localStorage.setItem('control', this.datos.control);
+    });
+  }
   pdf() {
     let contenido = {  
       pageSize: 'LETTER',

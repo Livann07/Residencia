@@ -97,7 +97,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     MatCheckboxModule,
     MatSlideToggleModule,
     QRCodeModule,
-    NgQrScannerModule
+    NgQrScannerModule,
   ],
   providers: [
     DataDbService,

@@ -64,6 +64,12 @@ export class SesionService {
     try{
       localStorage.removeItem('datos');
     }catch{}
+    try {
+      localStorage.removeItem('carrera');
+      localStorage.removeItem('control');
+    } catch (error) {
+      
+    }
     sessionStorage.clear();
 
   }
