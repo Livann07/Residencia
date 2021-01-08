@@ -39,13 +39,15 @@ export class ConstanciaComponent implements OnInit {
     this.mes= this.obtenerMesLetras(new Date().getMonth());
     this.year= new Date().getFullYear();
     this.obtenerConstancias();
-    if(localStorage.getItem('carrera') == null) {
-      this.obtenerCarreraYNumCotnrol();
-      console.log('descargue la carrera')
-    }
-    else {
-      this.carrera = localStorage.getItem('carrera');
-      this.num_control = localStorage.getItem('control');
+    if(localStorage.getItem("participa") != null && localStorage.getItem("tipo") == "alumInterno") {
+      if(localStorage.getItem('carrera') == null) {
+        this.obtenerCarreraYNumCotnrol();
+        console.log('descargue la carrera')
+      }
+      else {
+        this.carrera = localStorage.getItem('carrera');
+        this.num_control = localStorage.getItem('control');
+      }
     }
   }
 

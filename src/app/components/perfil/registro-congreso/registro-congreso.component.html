@@ -70,7 +70,7 @@
                     <br>
                     <div class="card-columns animated fadeIn fast">
                         <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
-                            <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
+                            <img [src]="ponente.img|noimage" class="card-img-top" [alt]="ponente.nombre">
                             <div class="card-body">
                                 <h5 class="card-title">{{ ponente.nombre }}</h5>
                                 <p class="card-text text-justify">{{ ponente.desConferencia }}</p>
@@ -220,7 +220,7 @@
 
                     <div class="card-columns animated fadeIn fast">
                         <div class="card animated fadeIn fast" formArrayName="confeMarcadas" *ngFor="let ponente of ponentess; let i=index">
-                            <img [src]="ponente.img" class="card-img-top" [alt]="ponente.nombre">
+                            <img [src]="ponente.img|noimage" class="card-img-top" [alt]="ponente.nombre">
                             <div class="card-body">
                                 <h5 class="card-title text-justify">{{ ponente.nombre }}</h5>
                                 <p class="card-text">{{ ponente.desConferencia }}</p>

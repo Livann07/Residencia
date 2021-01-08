@@ -51,6 +51,7 @@ export class DataDbService {
   }
   saveParticipante(newParticipante: participantes): void{
     this.participanteCongreso.add(newParticipante);
+    window.location.reload();
   }
 
   updateUserAdmin(editUser: usersU, id):void{

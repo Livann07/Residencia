@@ -25,7 +25,7 @@ export class AgregarConferencistasComponent implements OnInit {
   }
 
   eliminarConferencista(idConf: String){
-    const confirmar = confirm('¿Estás seguro de eliminar');
+    const confirmar = confirm('¿Estás seguro de eliminarlo?');
     if(confirmar)  this.data.eliminarConferencistas(idConf);
   }
 

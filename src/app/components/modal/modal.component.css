@@ -1,0 +1,8 @@
+
+form :valid {
+    border-color: green;
+}
+
+button:disabled {
+    cursor: no-drop;
+}

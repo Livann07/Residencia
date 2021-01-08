@@ -63,7 +63,7 @@ export class PerfilAdminComponent implements OnInit {
     this.getValorConstanciaDesdeInicio();
     setTimeout(() => {
       //this.datosHabConst = localStorage.getItem('valido');
-      console.log('ese' + this.cambio);
+      ////////console.log('ese' + this.cambio);
       //this.cambio = this.datosHabConst;
     }, 1000);
     

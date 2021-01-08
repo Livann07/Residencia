@@ -287,7 +287,7 @@ export class RegistroCongresoComponent implements OnInit {
       asistio: 'no',
     };
     this.dbData.saveParticipante(partExt);
-    window.location.reload();
+    
   }
   enviarAlumnos()
   {
@@ -310,10 +310,15 @@ export class RegistroCongresoComponent implements OnInit {
       asistio: "no",
     };
     this.dbData.saveParticipante(partInt);
-    window.location.reload();
+    
   }
   comprobarRegistro(){
-    this.recibirDatos();
+    if(localStorage.getItem("participa") == null) {
+      this.recibirDatos();
+    }
+    else {
+      this.isParticipante = true;
+    }
   }
 
   recibirDatos()
@@ -374,7 +379,7 @@ export class RegistroCongresoComponent implements OnInit {
         this.oo = true;
       });
       //console.log('es' + this.ponentes);
-      console.log('Hola 1');
+      //console.log('Hola 1');
     }else{
       this.ponentes= ls;
       this.oo = true;
@@ -396,10 +401,6 @@ export class RegistroCongresoComponent implements OnInit {
     this.ponentess = conferencistas;
     this.ponentesSC = ponentes;
     this.talleres = tallerista;
-    console.log(this.ponentess);
-    console.log(this.ponentesSC);
-    console.log(this.talleres);
-   
    
   }
   
