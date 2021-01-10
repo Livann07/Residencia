@@ -6,6 +6,7 @@ import { usersU } from '../../models/users.interface';
 import { Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 
 
@@ -34,10 +35,11 @@ export class MyErrorStateMatcher2 implements ErrorStateMatcher {
 export class RegisterComponent implements OnInit {
   hide = true;
   hide2 = true;
+  datos: any;
   registerForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   mat2 = new MyErrorStateMatcher2();
-
+  clienteSubscription: Subscription;
 
  constructor(private _builder: FormBuilder, private dbData: DataDbService, private route: Router) {
 
@@ -85,6 +87,38 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  revisarCorreo(values: usersU){
+    this.clienteSubscription = this.dbData.getUser().subscribe(resp =>{
+      this.datos = resp.map((e: any) => {
+        return {
+          nombre: e.payload.doc.data()['nombre'],
+          apellidos: e.payload.doc.data()['apellidos'],
+          correo: e.payload.doc.data()['correo'],
+          pass: e.payload.doc.data()['pass'],
+        };
+      });
+      var encontro = false;
+      this.datos.forEach(element => {
+        var ele: string = element.correo;
+        var val: string = values.correo;
+        if(ele.toLocaleLowerCase() == val.toLocaleLowerCase()){
+          encontro = true;
+        }
+      });
+      if(!encontro){
+        this.enviar(values);
+      }
+      else{
+        Swal.fire({
+          allowOutsideClick: false,
+          title: 'Error',
+          icon: 'error', 
+          text: 'Este correo ya esta registrado'
+        });
+      }
+      this.clienteSubscription.unsubscribe();
+    });
+  }
   enviar(values: usersU){
 
     const nuevo = {

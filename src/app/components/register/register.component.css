@@ -11,8 +11,14 @@
 .tam{
     max-width: 280px !important; 
 }
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 576px) {
     .divi {
         text-align: center;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .divi {
+        text-align: center;
+
     }
 }

@@ -1,0 +1,8 @@
+#contenedor{
+    margin-top: 20px;
+    margin-bottom: 350px;
+    min-height: 330px;
+}
+#texto-error {
+    color: red;
+}

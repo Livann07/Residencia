@@ -9,7 +9,7 @@ import { DataPonentesService } from './services/ponentes/data-ponentes.service';
 export class AppComponent {
   title = 'congresoResidencia';
 
- /* constructor( private _ponenteService: DataPonentesService,) {
+ constructor( private _ponenteService: DataPonentesService,) {
     try{
       localStorage.removeItem("conferencistas");
     }
@@ -17,5 +17,5 @@ export class AppComponent {
 
     }
     this._ponenteService.getPonentes();
-  }*/
+  }
 }

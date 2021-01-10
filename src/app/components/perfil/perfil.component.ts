@@ -11,7 +11,7 @@ import { DataDbService } from 'src/app/services/data-db.service';
 export class PerfilComponent implements OnInit {
   clienteSubscription: Subscription;
   constructor(public ses: SesionService, private route: Router, private dbData: DataDbService) { 
-    if(localStorage.getItem('participa') == null) {
+    if(localStorage.getItem('participa') == null || localStorage.getItem('tipo') == null) {
       this.recibirDatos();
     }
   }

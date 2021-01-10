@@ -43,7 +43,9 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
             </mat-form-field>
-            <br><br>
+            <a class="nav-link" [routerLink]="['/recuperar']" routerLinkActive="active">¿Has olvidado tu contrase&ntilde;a?</a>
+            
+            <br>
             <button class="btn btn-outline-inicio my-2 my-sm-0" type="submit" (click)="verificar(loginForm.value)" [style.width.px]=180>Iniciar Sesi&oacute;n</button>
             <br><br><br>
         </form>

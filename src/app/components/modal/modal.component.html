@@ -62,7 +62,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" #btnClose (click)="limpiar(formConf)" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" [disabled]='formConf.invalid'>Guardar</button>
+                        <button #enviar type="submit" class="btn btn-primary" [disabled]='formConf.invalid'>Guardar</button>
                     </div>
 
                     <input type="hidden" name="completed" value="false" [(ngModel)]="this.data.selectConferencista.completed">

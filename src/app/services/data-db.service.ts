@@ -50,14 +50,21 @@ export class DataDbService {
     this.alumExternosCollection.add(newAlumExternos);
   }
   saveParticipante(newParticipante: participantes): void{
-    this.participanteCongreso.add(newParticipante);
-    window.location.reload();
+    this.participanteCongreso.add(newParticipante).then(()=>{
+      window.location.reload();
+    });
+  
   }
 
   updateUserAdmin(editUser: usersU, id):void{
     this.itemDoc=this.afs.doc<usersU>("usuarios/"+id);
     this.itemDoc.update(editUser);
   }
+  updateUsuarios(id: string, password: string):void{
+    this.itemDoc=this.afs.doc<usersU>("usuarios/"+id);
+    this.itemDoc.update({pass: password});
+  }
+  
   updateParticipante(id: string):void{
     this.itemParti =this.partCongre.doc<participantes>("participantes/"+id);
     this.itemParti.update({asistio: "si"});

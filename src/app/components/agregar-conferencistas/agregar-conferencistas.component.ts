@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataPonentesService } from '../../services/ponentes/data-ponentes.service';
 import { conferencistas } from '../../models/conferencistas.interface';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-agregar-conferencistas',
@@ -11,7 +13,7 @@ export class AgregarConferencistasComponent implements OnInit {
 
    conferencistasData: conferencistas[];
   //public conferencistaData = [];
-  constructor(private data: DataPonentesService) { }
+  constructor(private data: DataPonentesService, private store: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.obtenerTodosConferencistas();
@@ -24,9 +26,17 @@ export class AgregarConferencistasComponent implements OnInit {
     });
   }
 
-  eliminarConferencista(idConf: String){
+  eliminarConferencista(idConf: String, url: string){
     const confirmar = confirm('¿Estás seguro de eliminarlo?');
-    if(confirmar)  this.data.eliminarConferencistas(idConf);
+    if(confirmar){
+      if(!(url == "") && !(url == null)){
+        try {
+          var desertRef = this.store.storage.refFromURL(url);
+          desertRef.delete();
+        } catch (error) { }
+      }
+      this.data.eliminarConferencistas(idConf);
+    }  
   }
 
   preActualizar(conf: conferencistas){

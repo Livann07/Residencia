@@ -1,0 +1,52 @@
+<div class="container animated fadeIn fast" id="contenedor">
+    <h1>Restablecer contrase&ntilde;a</h1>
+    <br>
+      <mat-horizontal-stepper linear="true" #stepper>
+        <mat-step [stepControl]="primerForm" editable=false>
+          <form [formGroup]="primerForm">
+            <ng-template matStepLabel>Escribe tu correo</ng-template>
+            <br>
+            <mat-form-field appearance="outline" [style.min-width.px]=210>
+              <mat-label>Correo</mat-label>
+              <input matInput  placeholder="ejemplo@gmail.com" formControlName="primerCtrl" autocomplete="off">
+            </mat-form-field>
+            <div>
+              <button mat-raised-button type="button" color="primary" (click)="checarCorreo()" [disabled]='primerForm.invalid'>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="segundoForm" label="Ingresa el codigo" editable=false >
+          <form [formGroup]="segundoForm">
+            <br>
+            <div>Si hay una cuenta registrada con este correo, te debio haber llegado un codigo de seguridad para asegurar que el correo es tuyo.</div>
+            <div>Ingresalo abajo</div>
+            <br>
+            <mat-form-field appearance="outline" [style.min-width.px]=210>
+              <mat-label>Codigo</mat-label>
+              <input matInput formControlName="segundoCtrl" placeholder="Codigo" autocomplete="off">
+            </mat-form-field>
+            <div>
+              <button mat-raised-button type="button" color="primary" (click)="validarCodigo()" [disabled]='segundoForm.invalid'>Comprobar</button>
+            </div>
+            <div id="texto-error">
+              {{textoCodigoError}}
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="tercerForm">
+            <form [formGroup]="tercerForm">
+                <ng-template matStepLabel>Ingresa una contrase&ntilde;a</ng-template>
+                <mat-form-field appearance="outline" [style.min-width.px]=210>
+                  <mat-label>Contrase&ntilde;a</mat-label>
+                  <input matInput type="password" placeholder="Contrase&ntilde;a" formControlName="tercerCtrl" autocomplete="off">
+                  <mat-error *ngIf="tercerForm.invalid">Debe tener al menos 6 caracteres</mat-error>
+                </mat-form-field>
+                <br>
+                <div>
+                  <button mat-raised-button type="button" color="primary" (click)="actualizarPass()" [disabled]='tercerForm.invalid'>Guardar</button>
+                </div>
+              </form>
+        </mat-step>
+      </mat-horizontal-stepper>
+</div>
+  

@@ -18,6 +18,7 @@ export class ModalComponent implements OnInit {
   @ViewChild('btnClose') btnClose : ElementRef;
   @ViewChild('inFile') inFile : ElementRef;
   @ViewChild('barra') barra : ElementRef;
+  @ViewChild('enviar') enviar : ElementRef;
   uploadPercent : Observable<number>;
   urlImage: Observable<string>;
   control = false;
@@ -54,6 +55,7 @@ export class ModalComponent implements OnInit {
   }
 
   onUpload(e){
+    this.enviar.nativeElement.disabled = true;
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePath = 'uploads/profile_' + id;
@@ -62,7 +64,7 @@ export class ModalComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();
     task.snapshotChanges().pipe(finalize(()=> {
       this.urlImage = ref.getDownloadURL();
-      this.subs = this.urlImage.subscribe(url => {this.datosUrl =url;  this.subs.unsubscribe();})
+      this.subs = this.urlImage.subscribe(url => {this.datosUrl =url;  this.subs.unsubscribe(); this.enviar.nativeElement.disabled = false;})
     })).subscribe();
    
     this.control =true;
@@ -75,8 +77,14 @@ export class ModalComponent implements OnInit {
     this.barra.nativeElement.style.width = 0;
   }
 
-
-
+  verificarValidez(confForm: NgForm){
+    if(confForm.invalid || this.barra.nativeElement.style.width < 100) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
   
 }
 

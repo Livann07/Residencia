@@ -15,6 +15,7 @@ import { PerfilAdminComponent } from './components/perfil-admin/perfil-admin.com
 import { AsistentesComponent } from './components/asistentes/asistentes.component';
 import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-congreso.component';
 import { AgregarConferencistasComponent } from './components/agregar-conferencistas/agregar-conferencistas.component';
+import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
 
 export const ROUTES: Routes = [
     {path: 'home', component: HomeComponent},
@@ -31,6 +32,7 @@ export const ROUTES: Routes = [
     {path: 'asistentes', component: AsistentesComponent, canActivate:[AuthGuardService2]},
     {path: 'asistencia', component: PerfilCongresoComponent, canActivate:[AuthGuardServiceCongreso]},
     {path: 'ponentes', component: PonentesComponent},
+    {path: 'recuperar', component: RecuperacionComponent, canActivate:[AuthGuardServiceFalse]},
     {path: 'ponente/:id', component: PonenteComponent},
     {path: 'search/:busqueda', component: SearchComponent},
     {path: '', pathMatch: 'full', redirectTo: 'home'},

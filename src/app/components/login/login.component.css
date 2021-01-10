@@ -15,3 +15,6 @@
     background-color: rgb(27 57 106) !important;
     color: white;
 }
+.nav-link{
+    padding-top: -22px;
+}

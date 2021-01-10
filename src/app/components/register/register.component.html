@@ -1,15 +1,16 @@
 <div class="container">
     <br><br>
     <form [formGroup]="registerForm" style="text-align: center;">
-
-
-
         <h1 class="animated fadeIn fast"> Registro </h1>
-        <hr><br>
+        <hr>
+        <h6>
+            Nota: es importante ingresar datos reales, tanto en tu nombre como en el correo.
+        </h6>
+        <br><br>
         <div class="divi">
             <label class="texto">Nombre: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+        <mat-form-field appearance="outline" [style.width.%]=51 [style.min-width.px]=250>
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="Nombre" formControlName='nombre'>
         </mat-form-field>
@@ -17,7 +18,7 @@
         <div class="divi">
             <label class="texto">Apellidos: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+        <mat-form-field appearance="outline" [style.width.%]=51 [style.min-width.px]=250>
             <mat-label>Apellidos</mat-label>
             <input matInput placeholder="Apellidos" formControlName='apellidos'>
         </mat-form-field>
@@ -27,7 +28,7 @@
         <div class="divi">
             <label class="texto">Correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+        <mat-form-field appearance="outline" [style.width.%]=51 [style.min-width.px]=250>
             <mat-label>Correo Electr&oacute;nico</mat-label>
             <input matInput placeholder="pat@example.com" formControlName="correo" required>
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -36,7 +37,7 @@
         <div class="divi">
             <label class="texto">Confirmar correo: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+        <mat-form-field appearance="outline" [style.width.%]=51 [style.min-width.px]=250>
             <mat-label>Confirmar Correo Electr&oacute;nico</mat-label>
             <input matInput placeholder="pat@example.com" formControlName="confirmarCorreo" required [errorStateMatcher]="mat2">
             <mat-error *ngIf="registerForm.hasError('notSame2')"> Los correos no coinciden </mat-error>
@@ -46,7 +47,7 @@
         <div class="divi">
             <label class="texto">Contrase&ntilde;a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <mat-form-field appearance="outline" [style.width.%]=50 [style.min-width.px]=250>
+        <mat-form-field appearance="outline" [style.width.%]=51 [style.min-width.px]=250>
             <mat-label>Ingresa una contrase&ntilde;a</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName='pass' autocomplete="on">
             <mat-error *ngIf="pass1.invalid"> {{getErrorPass1()}}</mat-error>
@@ -58,7 +59,7 @@
         <div class="divi">
             <label class="texto">Confirmar contrase&ntilde;a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <mat-form-field appearance="outline" class="margen" [style.width.%]=50 [style.min-width.px]=250>
+        <mat-form-field appearance="outline" class="margen" [style.width.%]=51 [style.min-width.px]=250>
             <mat-label>Confirma la contrase&ntilde;a</mat-label>
             <input matInput [type]="hide2 ? 'password' : 'text'" formControlName='confirmarPass' [errorStateMatcher]="matcher" autocomplete="on">
             <button mat-icon-button matSuffix (click)="hide2 = !hide2" attr.aria-label="'Hide password'" [attr.aria-pressed]="hide2">
@@ -68,7 +69,7 @@
         </mat-form-field>
 
         <br> <br>
-        <button mat-raised-button color="primary" type="button" [disabled]='registerForm.invalid' (click)='enviar(registerForm.value)' [style.width.px]=200>Enviar</button>
+        <button mat-raised-button color="primary" type="button" [disabled]='registerForm.invalid' (click)='revisarCorreo(registerForm.value)' [style.width.px]=200>Enviar</button>
         <p></p>
     </form>
     <br><br><br>

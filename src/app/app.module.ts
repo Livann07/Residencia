@@ -34,6 +34,8 @@ import { AuthGuardService, AuthGuardServiceFalse } from './services/autorizacion
 import { ConstanciaComponent } from './components/perfil/constancia/constancia.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { NgQrScannerModule } from 'angular2-qrscanner';
+import {MatStepperModule} from '@angular/material/stepper';
+
 // firebase
 import { AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
@@ -49,6 +51,7 @@ import { PerfilCongresoComponent } from './components/perfil-congreso/perfil-con
 import { AgregarConferencistasComponent } from './components/agregar-conferencistas/agregar-conferencistas.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
 
 
 @NgModule({
@@ -75,6 +78,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     AgregarConferencistasComponent,
     ModalComponent,
     NoimagePipe,
+    RecuperacionComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +102,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     MatSlideToggleModule,
     QRCodeModule,
     NgQrScannerModule,
+    MatStepperModule,
   ],
   providers: [
     DataDbService,
