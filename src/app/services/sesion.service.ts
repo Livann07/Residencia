@@ -70,6 +70,12 @@ export class SesionService {
     } catch (error) {
       
     }
+    try {
+      localStorage.removeItem('participa');
+      localStorage.removeItem('tipo');
+    } catch (error) {
+      
+    }
     sessionStorage.clear();
 
   }

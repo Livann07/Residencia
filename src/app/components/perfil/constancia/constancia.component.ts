@@ -40,7 +40,7 @@ export class ConstanciaComponent implements OnInit {
     this.mes= this.obtenerMesLetras(new Date().getMonth());
     this.year= new Date().getFullYear();
     this.obtenerConstancias();
-    if(localStorage.getItem("tipo") == "alumExterno"){
+    if(localStorage.getItem("tipo") == "alumExterno" || localStorage.getItem("tipo") == null){
       this.externo = true;
     }
     if(localStorage.getItem("participa") != null && localStorage.getItem("tipo") == "alumInterno") {
