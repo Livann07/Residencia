@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
         allowOutsideClick: false,
         title: 'Error',
         icon: 'error', 
-        text: 'No existe ese correo, registrate para acceder'
+        text: 'El correo ingresado no existe, regístrate para acceder'
       });
     }
     if(!pw && ss){
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
         allowOutsideClick: false,
         title: 'Error',
         icon: 'error', 
-        text: 'Contraseña incorrecta, intentalo de nuevo'
+        text: 'Contraseña incorrecta, inténtalo de nuevo'
       });
     }
     if(l == false){

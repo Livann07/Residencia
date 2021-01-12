@@ -6,21 +6,21 @@
             <p class="lead" style="color:rgb(27 57 106)">Consulta los links de cada conferencia en el programa</p>
             <a target="_blank" href="https://www.mochis.tecnm.mx/wp-content/uploads/2020/06/cicti2020_programa-def.pdf">Programa</a>
             <br><br><br>
-            <button type="button" class="btn btn-outline-info" (click)="mostrarCodigo()" style="text-align: center;">Mostrar codigo para asistencia al evento</button>
+            <button type="button" class="btn btn-outline-info" (click)="mostrarCodigo()" style="text-align: center;">Mostrar c&oacute;digo para asistencia al evento</button>
             <br><br>
             <div [hidden]='this.hid' style="text-align: center;">
-                <h4>Guardalo, se te solicitara en la entrada al evento</h4>
+                <h4>Gu&aacute;rdalo, se te solicitara en la entrada al evento</h4>
                 <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'">
                 </qrcode>
             </div>
         </div>
     </div>
     <div class="container animated fadeIn fast" *ngSwitchCase='false'>
-        <h1>Registrate para el congreso</h1>
+        <h1>Reg&iacute;strate para el congreso</h1>
         <hr>
         <label id="example-radio-group-label">¿Eres estudiante del ITLM?</label>
         <mat-radio-group aria-label="¿Eres estudiante del ITLM?" class="botones" [(ngModel)]="opcion">
-            <mat-radio-button value="Si">Si, lo soy</mat-radio-button>
+            <mat-radio-button value="Si">S&iacute;, lo soy</mat-radio-button>
             <mat-radio-button value="No">No, vengo de otra escuela</mat-radio-button>
         </mat-radio-group>
         <hr>
@@ -205,8 +205,8 @@
                     </mat-form-field>
                     &nbsp;
                     <mat-form-field appearance="outline" [style.width.px]=230>
-                        <mat-label>Institucion</mat-label>
-                        <input matInput placeholder="Institucion" formControlName='institucion'>
+                        <mat-label>Instituci&oacute;n</mat-label>
+                        <input matInput placeholder="Institución" formControlName='institucion'>
                     </mat-form-field>
                     <br>
                     <!-- <label id="example-radio-group-label">Selecciona las conferencias a las que te gustaria asistir</label>

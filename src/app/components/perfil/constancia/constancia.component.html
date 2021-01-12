@@ -2,7 +2,7 @@
 <div class="container animated fadeIn slow">
     <div *ngIf='!externo; else elseExternos'>
         <div [ngSwitch]='constanciasValidas' class="jumbotron">
-            <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Proximamente</h1>
+            <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Pr&oacute;ximamente</h1>
             <p *ngSwitchCase="false" class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para generar tu constancia</p>
             <h1 *ngSwitchCase="true" class="display-4" style="color:rgb(27 57 106)">Congreso Internacional</h1>
             <p *ngSwitchCase="true" class="lead" style="color:rgb(27 57 106)">Genera tu constancia aqu&iacute;</p>
@@ -11,10 +11,10 @@
     </div>
     <ng-template #elseExternos>
         <div [ngSwitch]='constanciasValidas' class="jumbotron">
-            <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Proximamente</h1>
+            <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Pr&oacute;ximamente</h1>
             <p *ngSwitchCase="false" class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para generar tu constancia</p>
             <h1 *ngSwitchCase="true" class="display-4" style="color:rgb(27 57 106)">Congreso Internacional</h1>
-            <p *ngSwitchCase="true" class="lead" style="color:rgb(27 57 106)">Lo sentimos, la constancia solo la pueden generar alumnos del Tecnologico</p>
+            <p *ngSwitchCase="true" class="lead" style="color:rgb(27 57 106)">Lo sentimos, la constancia solo la pueden generar alumnos del Tecnol&oacute;gico</p>
         </div>
     </ng-template>
 </div>

@@ -15,15 +15,15 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="segundoForm" label="Ingresa el codigo" editable=false >
+        <mat-step [stepControl]="segundoForm" label="Ingresa el código" editable=false >
           <form [formGroup]="segundoForm">
             <br>
-            <div>Si hay una cuenta registrada con este correo, te debio haber llegado un codigo de seguridad para asegurar que el correo es tuyo.</div>
-            <div>Ingresalo abajo</div>
+            <div>Si hay una cuenta registrada con este correo, te debi&oacute; haber llegado un c&oacute;digo de seguridad para asegurar que el correo es tuyo.</div>
+            <div>Ingr&eacute;salo abajo</div>
             <br>
             <mat-form-field appearance="outline" [style.min-width.px]=210>
-              <mat-label>Codigo</mat-label>
-              <input matInput formControlName="segundoCtrl" placeholder="Codigo" autocomplete="off">
+              <mat-label>C&oacute;digo</mat-label>
+              <input matInput formControlName="segundoCtrl" placeholder="Código" autocomplete="off">
             </mat-form-field>
             <div>
               <button mat-raised-button type="button" color="primary" (click)="validarCodigo()" [disabled]='segundoForm.invalid'>Comprobar</button>
