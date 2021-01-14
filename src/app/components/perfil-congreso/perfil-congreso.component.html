@@ -10,15 +10,15 @@
     <div [hidden]='this.hid'>
         <div class="d-flex justify-content-center">
             <div class="spinner-border" role="status" [hidden]="load">
-              
+                <span class="sr-only">Cargando...</span>
             </div>
         </div>
         <qr-scanner
-            [debug]="false"
-            [canvasWidth]="1080" 
-            [canvasHeight]="720"
-            [stopAfterScan]="false" 
-            [updateTime]="3000">
+        [debug]="false"
+        [canvasWidth]="1080" 
+        [canvasHeight]="720"
+        [stopAfterScan]="false" 
+        [updateTime]="3000">
         </qr-scanner>
     </div>
 </div>
