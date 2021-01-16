@@ -11,7 +11,7 @@ import { DataDbService } from 'src/app/services/data-db.service';
 export class PerfilComponent implements OnInit {
   clienteSubscription: Subscription;
   constructor(public ses: SesionService, private route: Router, private dbData: DataDbService) { 
-    if(localStorage.getItem('participa') == null || localStorage.getItem('tipo') == null) {
+    if(localStorage.getItem('participa') == null || localStorage.getItem('tipo') == null || localStorage.getItem('A') == null) {
       this.recibirDatos();
     }
   }
@@ -35,6 +35,7 @@ export class PerfilComponent implements OnInit {
         return {
           correo: e.payload.doc.data()['correo'],
           parti: e.payload.doc.data()['participante'],
+          asis: e.payload.doc.data()['asistio'],
         };
       });
 
@@ -53,6 +54,7 @@ export class PerfilComponent implements OnInit {
         encontro = true;
         localStorage.setItem('participa', 'true');
         localStorage.setItem('tipo', element.parti);
+        localStorage.setItem('A', element.asis);
       }
     });
     

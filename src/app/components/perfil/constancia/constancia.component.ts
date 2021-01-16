@@ -4,6 +4,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "src/assets/custom-fonts.js";  
 import { DataDbService } from '../../../services/data-db.service';
 import { Subscription } from 'rxjs';
+import { Console } from 'console';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;  
 pdfMake.fonts = {
   courier: {
@@ -29,7 +30,7 @@ export class ConstanciaComponent implements OnInit {
   suscripcionD : Subscription;
   x: any;
   externo: boolean = false;
-
+  asistio: boolean = false;
   datosAlumno: any;
   suscripcionN : Subscription;
   datos: any;
@@ -42,6 +43,9 @@ export class ConstanciaComponent implements OnInit {
     this.obtenerConstancias();
     if(localStorage.getItem("tipo") == "alumExterno" || localStorage.getItem("tipo") == null){
       this.externo = true;
+    }
+    if(localStorage.getItem("A") == "si") {
+      this.asistio = true;
     }
     if(localStorage.getItem("participa") != null && localStorage.getItem("tipo") == "alumInterno") {
       if(localStorage.getItem('carrera') == null) {
@@ -235,7 +239,7 @@ export class ConstanciaComponent implements OnInit {
     mes[9] = "octubre";
     mes[10] = "noviembre";
     mes[11] = "diciembre";
-    return mes[numero-1];
+    return mes[numero];
   }
   
 }

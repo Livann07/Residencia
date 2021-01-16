@@ -2,11 +2,22 @@
 <div class="container animated fadeIn slow">
     <div *ngIf='!externo; else elseExternos'>
         <div [ngSwitch]='constanciasValidas' class="jumbotron">
-            <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Pr&oacute;ximamente</h1>
-            <p *ngSwitchCase="false" class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para generar tu constancia</p>
-            <h1 *ngSwitchCase="true" class="display-4" style="color:rgb(27 57 106)">Congreso Internacional</h1>
-            <p *ngSwitchCase="true" class="lead" style="color:rgb(27 57 106)">Genera tu constancia aqu&iacute;</p>
-            <button *ngSwitchCase="true" type="button" class="btn btn-outline-info" (click)="pdf()">Descargar constancia de asistencia</button>
+            <div *ngSwitchCase="false">
+                <h1 *ngSwitchCase="false" class="display-4" style="color:rgb(27 57 106)">Pr&oacute;ximamente</h1>
+                <p *ngSwitchCase="false" class="lead" style="color:rgb(27 57 106)">Espera las fechas indicadas para generar tu constancia</p>
+            </div>
+            <div *ngSwitchCase="true">
+                <div *ngIf='asistio; else elseAsistio'>
+                    <h1 class="display-4" style="color:rgb(27 57 106)">Congreso Internacional</h1>
+                    <p  class="lead" style="color:rgb(27 57 106)">Genera tu constancia aqu&iacute;</p>
+                    <button type="button" class="btn btn-outline-info" (click)="pdf()">Descargar constancia de asistencia</button>
+                </div>
+                <ng-template #elseAsistio>
+                    <h1 class="display-4" style="color:rgb(27 57 106)">Congreso Internacional</h1>
+                    <p  class="lead" style="color:rgb(27 57 106)">No puedes generar tu constancia debido a que no asististe al evento</p>
+                </ng-template>
+            </div>
+            
         </div>
     </div>
     <ng-template #elseExternos>

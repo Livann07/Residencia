@@ -73,6 +73,7 @@ export class SesionService {
     try {
       localStorage.removeItem('participa');
       localStorage.removeItem('tipo');
+      localStorage.removeItem('A');
     } catch (error) {
       
     }
