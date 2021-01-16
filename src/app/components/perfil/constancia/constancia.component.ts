@@ -4,7 +4,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "src/assets/custom-fonts.js";  
 import { DataDbService } from '../../../services/data-db.service';
 import { Subscription } from 'rxjs';
-import { Console } from 'console';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;  
 pdfMake.fonts = {
   courier: {
